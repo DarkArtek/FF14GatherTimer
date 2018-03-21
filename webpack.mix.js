@@ -11,14 +11,17 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.react('resources/assets/js/app.tsx', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
+mix.js('resources/assets/js/app.ts', 'public/js')
+    .sass('resources/assets/sass/app.scss', 'public/css')
     .webpackConfig({
         module: {
             rules: [
                 {
-                    test: /\.tsx?$/,
+                    test: /\.ts?$/,
                     loader: 'ts-loader',
+                    options: {
+                        appendTsSuffixTo: [/\.vue$/]
+                    }
                 },
             ],
         },

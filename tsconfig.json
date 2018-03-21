@@ -3,10 +3,8 @@
     "sourceMap": true,
     // TSはECMAScript 5に変換
     "target": "es5",
-    // TSのモジュールはES Modulesとして出力
+    // webpack 2 以降 または rollup を使用している場合、ツリーシェイキングを活用するために
     "module": "es2015",
-    // JSXの書式を有効に設定
-    "jsx": "react",
     "moduleResolution": "node",
     "lib": [
       "es2017",
