@@ -64,4 +64,15 @@ class GatherPlaceTypeRepository implements GatherPlaceTypeRepositoryInterface
     {
         return $gatherPlaceType->save();
     }
+
+    /**
+     * レコードの作成もしくは更新
+     *
+     * @param GatherPlaceType $gatherPlaceType
+     * @return bool
+     */
+    public function save(GatherPlaceType $gatherPlaceType)
+    {
+        return $gatherPlaceType->save();
+    }
 }

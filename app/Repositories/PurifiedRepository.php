@@ -64,4 +64,15 @@ class PurifiedRepository implements PurifiedRepositoryInterface
     {
         return $purified->save();
     }
+
+    /**
+     * レコードの作成もしくは更新
+     *
+     * @param Purified $purified
+     * @return bool
+     */
+    public function save(Purified $purified)
+    {
+        return $purified->save();
+    }
 }

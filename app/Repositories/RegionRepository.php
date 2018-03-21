@@ -87,4 +87,15 @@ class RegionRepository implements RegionRepositoryInterface
     {
         return Region::destroy($regionId);
     }
+
+    /**
+     * レコードの作成もしくは更新
+     *
+     * @param Region $region
+     * @return bool
+     */
+    public function save(Region $region)
+    {
+        return $region->save();
+    }
 }
