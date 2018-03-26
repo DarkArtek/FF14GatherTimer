@@ -15,17 +15,35 @@
 
         <div class="col-md-3 col-md-offset-1">
             <div class="card">
-                <table class="table table-striped">
-                    <tbody>
+                <div id="accordion">
                     @foreach($regions as $region)
-                        <tr>
-                            <td>
-                                {{ $region->name }}
-                            </td>
-                        </tr>
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse"
+                                        data-target="#collapse{{ $region->id }}"
+                                        aria-expanded="true" aria-controls="collapse{{ $region->id }}">
+                                    {{ $region->name }}
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapse{{ $region->id }}" class="collapse"
+                             aria-labelledby="heading{{ $region->id }}" data-parent="#accordion">
+                            <table class="table table-striped">
+                                <tbody>
+                                @foreach($region->areas as $area)
+                                    <tr>
+                                        <td>
+                                            {{ $area->name }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     @endforeach
-                    </tbody>
-                </table>
+                </div>
+
 
                 <div class="card-body">
                     <form method="POST" action="/region">

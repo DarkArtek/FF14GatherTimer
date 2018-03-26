@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\View;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\v1\RegionResource;
 use App\Services\RegionService;
-use Illuminate\Support\Facades\Request;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * 編集コントローラ
