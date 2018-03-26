@@ -5509,31 +5509,37 @@ tbody.collapse.show {
   color: #202326;
 }
 
-.alert-success {
+.alert-success,
+.status-success {
   color: #155724;
   background-color: #d4edda;
   border-color: #c3e6cb;
 }
 
-.alert-success hr {
+.alert-success hr,
+.status-success hr {
   border-top-color: #b1dfbb;
 }
 
-.alert-success .alert-link {
+.alert-success .alert-link,
+.status-success .alert-link {
   color: #0b2e13;
 }
 
-.alert-info {
+.alert-info,
+.status- {
   color: #0c5460;
   background-color: #d1ecf1;
   border-color: #bee5eb;
 }
 
-.alert-info hr {
+.alert-info hr,
+.status- hr {
   border-top-color: #abdde5;
 }
 
-.alert-info .alert-link {
+.alert-info .alert-link,
+.status- .alert-link {
   color: #062c33;
 }
 
@@ -5551,17 +5557,20 @@ tbody.collapse.show {
   color: #533f03;
 }
 
-.alert-danger {
+.alert-danger,
+.status-error {
   color: #721c24;
   background-color: #f8d7da;
   border-color: #f5c6cb;
 }
 
-.alert-danger hr {
+.alert-danger hr,
+.status-error hr {
   border-top-color: #f1b0b7;
 }
 
-.alert-danger .alert-link {
+.alert-danger .alert-link,
+.status-error .alert-link {
   color: #491217;
 }
 

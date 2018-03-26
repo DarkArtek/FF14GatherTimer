@@ -4,8 +4,86 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca3cb94f7e1f8aef3200472cc76465cd",
+    "content-hash": "0d4f6909d047615a4c0effa8b2c7dace",
     "packages": [
+        {
+            "name": "4kizuki/php-bsc",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/4kizuki/php-bsc.git",
+                "reference": "a74313a89ebd12144093840417e4ad749b692873"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/4kizuki/php-bsc/zipball/a74313a89ebd12144093840417e4ad749b692873",
+                "reference": "a74313a89ebd12144093840417e4ad749b692873",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.3"
+            },
+            "type": "utility",
+            "autoload": {
+                "psr-4": {
+                    "Akizuki\\BSC\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "4kizuki",
+                    "email": "akizuki.c10.l65@gmail.com"
+                }
+            ],
+            "description": "Basic Super Classes for PHP",
+            "time": "2017-10-21T12:09:03+00:00"
+        },
+        {
+            "name": "4kizuki/php-enum",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/4kizuki/php-enum.git",
+                "reference": "e8c123ddb40395b2ef914cddce7dc2a657ac6679"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/4kizuki/php-enum/zipball/e8c123ddb40395b2ef914cddce7dc2a657ac6679",
+                "reference": "e8c123ddb40395b2ef914cddce7dc2a657ac6679",
+                "shasum": ""
+            },
+            "require": {
+                "4kizuki/php-bsc": "^1.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.3"
+            },
+            "type": "utility",
+            "autoload": {
+                "psr-4": {
+                    "Akizuki\\enum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "4kizuki",
+                    "email": "akizuki.c10.l65@gmail.com"
+                }
+            ],
+            "description": "Enumeration Classes for PHP",
+            "time": "2017-10-14T06:49:50+00:00"
+        },
         {
             "name": "barryvdh/laravel-debugbar",
             "version": "v3.1.3",

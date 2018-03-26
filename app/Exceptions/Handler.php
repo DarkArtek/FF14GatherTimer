@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Arr;
+use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -45,12 +46,17 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception $exception
      * @return \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\Response
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof ExpectedException) {
+            $message = '' === $exception->getMessage() ? 'エラーが発生しました' : $exception->getMessage();
+            return redirect()->back()->with(['status' => 'error', 'message' => $message]);
+        }
+
         return parent::render($request, $exception);
     }
 }

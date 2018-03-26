@@ -12,3 +12,15 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+.status-success {
+  @extend .alert-success
+}
+
+.status-error {
+  @extend .alert-danger
+}
+
+.status- {
+  @extend .alert-info
+}

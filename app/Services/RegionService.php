@@ -4,11 +4,13 @@ namespace App\Services;
 
 use App\Eloquents\Region;
 use App\Http\Requests\RegionDestroyRequest;
-use App\Http\Requests\RegionStoreRequest;
 use App\Http\Requests\RegionUpdateRequest;
+use App\Exceptions\ConflictException;
+use App\Http\Requests\RegionStoreRequest;
 use App\Repositories\Interfaces\RegionRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Response;
 
 /**
  * リージョンサービス
@@ -106,6 +108,50 @@ class RegionService
         DB::transaction(function () use ($request) {
             $this->regionRepository->destroy(
                 $request->all()
+            );
+        });
+    }
+
+    /**
+     * リージョンの生成
+     *
+     * @param  RegionStoreRequest $request
+     * @return Response
+     * @throws ConflictException
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function store(RegionStoreRequest $request)
+    {
+        if ($this->regionRepository->nameExists($request->get('name'))) {
+            throw new ConflictException("すでに存在するリージョン名です");
+        }
+
+        DB::transaction(function () use ($request) {
+            $region = new Region();
+            $this->regionRepository->save(
+                $region->fill($request->all())
+            );
+        });
+    }
+
+    /**
+     * リージョンの更新
+     * @param Request $request
+     * @throws ConflictException
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function update(Request $request)
+    {
+        $region = $this->regionRepository->findOrNullById($request::get('id'));
+        if (null === $region) {
+            throw new ConflictException("更新対象のリージョンが見つかりませんでした");
+        }
+
+        DB::transaction(function () use ($region, $request) {
+            $this->regionRepository->save(
+                $region->fill($request::all())
             );
         });
     }
