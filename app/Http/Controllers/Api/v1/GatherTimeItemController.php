@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\v1\GatherTimeResource;
-use App\Http\Resources\v1\GatherItemTimeResource;
-use App\Services\gatherTimeService;
-use Illuminate\Http\Request;
+use App\Services\GatherTimeService;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
