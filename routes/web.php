@@ -19,4 +19,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/edit', 'View\EditController@index')->name('edit');
-Route::post('/region', 'View\RegionController@store');
+
+Route::resource(
+    'region',
+    'View\RegionController',
+    [
+        'only' => [
+            'store', 'update', 'destroy'
+        ]
+    ]
+);

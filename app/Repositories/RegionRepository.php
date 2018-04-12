@@ -109,4 +109,15 @@ class RegionRepository implements RegionRepositoryInterface
     {
         return $region->save();
     }
+
+    /**
+     * レコードの作成もしくは更新
+     *
+     * @param int $regionId
+     * @return bool
+     */
+    public function destroy(int $regionId)
+    {
+        return Region::destroy($regionId);
+    }
 }

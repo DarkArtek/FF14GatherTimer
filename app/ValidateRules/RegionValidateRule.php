@@ -12,7 +12,11 @@ namespace App\ValidateRules;
 class RegionValidateRule extends ValidateRule
 {
     protected static $rules = [
-        'id' => ['require', 'num'],
-        'name' => ['required', 'max:255'],
+        'id' => ['required', 'num'],
+        'name' => [
+            'required',
+            'max:255',
+            'unique:region_master',
+        ],
     ];
 }

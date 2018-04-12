@@ -49,7 +49,12 @@
                     <form method="POST" action="/region">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <input type="text" name="name" class="form-control" id="region-name" placeholder="リージョン名">
+                            <input type="text" id="region-name" placeholder="リージョン名" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}">
+                            @if ($errors->has('name'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
                         </div>
                         <button type="submit" class="btn btn-primary">登録</button>
                     </form>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\View;
 
 use App\Http\Controllers\Controller;
 use App\Services\RegionService;
+use Illuminate\Support\Collection;
 
 /**
  * 編集コントローラ
@@ -35,7 +36,9 @@ class EditController extends Controller
         return view(
             'edit.index',
             [
-                'regions' => $this->regionService->findAll()
+                'regions' => $this->regionService->findAll(),
+                'status' => 'success',
+                'message' => '',
             ]
         );
     }
