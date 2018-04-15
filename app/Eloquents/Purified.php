@@ -20,5 +20,4 @@ class Purified extends Model
      * @var array 編集可能なカラム
      */
     protected $fillable = ['name'];
-
 }

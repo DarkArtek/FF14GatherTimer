@@ -41,13 +41,13 @@ class AreaController extends Controller
     /**
      * /area/{id}のgetアクセス
      *
-     * @param $id
+     * @param int $areaId
      * @return AreaResource
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
-    public function show($id)
+    public function show($areaId)
     {
-        $data = $this->areaService->findOrNullById($id);
+        $data = $this->areaService->findOrNullById($areaId);
         if(null === $data){
             throw new NotFoundHttpException();
         }

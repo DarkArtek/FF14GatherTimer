@@ -36,12 +36,12 @@ class GatherTimeService
     /**
      * Idから採取時間を取得
      *
-     * @param $id int
+     * @param $gatherTimeId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findPlaceTimeByPlaceId($id)
+    public function findPlaceTimeByPlaceId($gatherTimeId)
     {
-        return $this->gatherTimeRepository->findByPlaceId($id);
+        return $this->gatherTimeRepository->findByPlaceId($gatherTimeId);
     }
 
     /**
@@ -57,11 +57,11 @@ class GatherTimeService
     /**
      * 採取場所のIdから採取時間をアイテムごとに取得
      *
-     * @param $id int
+     * @param $gatherItemId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findItemTimeByItemId($id)
+    public function findItemTimeByItemId($gatherItemId)
     {
-        return $this->gatherTimeRepository->findItemTimeByItemId($id);
+        return $this->gatherTimeRepository->findItemTimeByItemId($gatherItemId);
     }
 }

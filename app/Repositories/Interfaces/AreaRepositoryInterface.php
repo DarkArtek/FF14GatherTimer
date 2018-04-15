@@ -2,6 +2,8 @@
 
 namespace App\Repositories\Interfaces;
 
+use App\Eloquents\Area;
+
 interface AreaRepositoryInterface
 {
     /**
@@ -18,11 +20,19 @@ interface AreaRepositoryInterface
      */
     public function findExistsGatherPlace();
 
-            /**
+    /**
      * Idからエリアを取得
      *
-     * @param $id int
+     * @param $areaId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findorNullById($id);
+    public function findorNullById($areaId);
+
+    /**
+     * レコードの作成もしくは更新
+     *
+     * @param Area $area
+     * @return bool
+     */
+    public function save(Area $area);
 }

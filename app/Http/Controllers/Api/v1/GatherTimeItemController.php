@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\v1\GatherTimeResource;
 use App\Services\GatherTimeService;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -18,22 +19,20 @@ class GatherTimeItemController extends Controller
     private $gatherTimeService;
 
     /**
-     * GatherTimeController constructor.
      * @param gatherTimeService $gatherTimeService
      */
     public function __construct(
         gatherTimeService $gatherTimeService
-    )
-    {
+    ) {
         $this->gatherTimeService = $gatherTimeService;
     }
 
     /**
      * /gatherTime/item/のgetアクセス
      *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return AnonymousResourceCollection
      */
-    public function Index()
+    public function index(): AnonymousResourceCollection
     {
         return GatherTimeResource::collection($this->gatherTimeService->findItemTimeAll());
     }
@@ -41,13 +40,14 @@ class GatherTimeItemController extends Controller
     /**
      * /gatherTime/Item/{id}のgetアクセス
      *
-     * @param  int {id}
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @param  int $itemId
+     * @return AnonymousResourceCollection
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function show($id)
+    public function show($itemId): AnonymousResourceCollection
     {
-        $data = $this->gatherTimeService->findItemTimeByItemId($id);
-        if(null === $data){
+        $data = $this->gatherTimeService->findItemTimeByItemId($itemId);
+        if (null === $data) {
             throw new NotFoundHttpException();
         }
 

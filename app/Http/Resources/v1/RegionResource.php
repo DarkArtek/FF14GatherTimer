@@ -4,6 +4,12 @@ namespace App\Http\Resources\v1;
 
 use Illuminate\Http\Resources\Json\Resource;
 
+/**
+ * リージョンリソース
+ *
+ * Class RegionResource
+ * @package App\Http\Resources\v1
+ */
 class RegionResource extends Resource
 {
     /**
@@ -11,6 +17,7 @@ class RegionResource extends Resource
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function toArray($request)
     {

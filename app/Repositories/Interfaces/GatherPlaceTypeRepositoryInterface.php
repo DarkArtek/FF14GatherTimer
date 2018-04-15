@@ -1,5 +1,8 @@
 <?php
+
 namespace App\Repositories\Interfaces;
+
+use App\Eloquents\GatherPlaceType;
 
 interface GatherPlaceTypeRepositoryInterface
 {
@@ -20,8 +23,16 @@ interface GatherPlaceTypeRepositoryInterface
     /**
      * Idからタイプを取得
      *
-     * @param $id int
+     * @param $gatherPlaceTypeId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findOrNullById($id);
+    public function findOrNullById($gatherPlaceTypeId);
+
+    /**
+     * レコードの作成もしくは更新
+     *
+     * @param GatherPlaceType $gatherPlaceType
+     * @return bool
+     */
+    public function save(GatherPlaceType $gatherPlaceType);
 }

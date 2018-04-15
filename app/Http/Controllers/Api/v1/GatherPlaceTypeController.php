@@ -42,12 +42,12 @@ class GatherPlaceTypeController extends Controller
     /**
      * /type/{id}のgetアクセス
      *
-     * @param $id
+     * @param int $gatherPlaceId
      * @return GatherPlaceTypeResource
      */
-    public function show($id)
+    public function show($gatherPlaceId)
     {
-        $data = $this->gatherPlaceTypeService->findOrNullById($id);
+        $data = $this->gatherPlaceTypeService->findOrNullById($gatherPlaceId);
         if(null === $data){
             throw new NotFoundHttpException();
         }

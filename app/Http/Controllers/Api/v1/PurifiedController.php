@@ -41,12 +41,12 @@ class PurifiedController extends Controller
     /**
      * /purified/{id}のgetアクセス
      *
-     * @param $id
+     * @param int $purifiedId
      * @return PurifiedResource
      */
-    public function show($id)
+    public function show($purifiedId)
     {
-        $data = $this->purifiedService->findOrNullById($id);
+        $data = $this->purifiedService->findOrNullById($purifiedId);
         if(null === $data){
             throw new NotFoundHttpException();
         }

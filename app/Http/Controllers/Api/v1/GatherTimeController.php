@@ -43,12 +43,12 @@ class GatherTimeController extends Controller
     /**
      * /gatherTime/{id}のgetアクセス
      *
-     * @param  int {id}
+     * @param  int $gatherTimeId
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function show($id)
+    public function show($gatherTimeId)
     {
-        $data = $this->gatherTimeService->findPlaceTimeByPlaceId($id);
+        $data = $this->gatherTimeService->findPlaceTimeByPlaceId($gatherTimeId);
         if(null === $data){
             throw new NotFoundHttpException();
         }

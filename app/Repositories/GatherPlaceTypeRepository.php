@@ -46,11 +46,22 @@ class GatherPlaceTypeRepository implements GatherPlaceTypeRepositoryInterface
     /**
      * Idからタイプを取得
      *
-     * @param $id int
+     * @param $gatherPlaceTypeId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findOrNullById($id)
+    public function findOrNullById($gatherPlaceTypeId)
     {
-        return $this->gatherPlaceType->find($id);
+        return $this->gatherPlaceType->find($gatherPlaceTypeId);
+    }
+
+    /**
+     * レコードの作成もしくは更新
+     *
+     * @param GatherPlaceType $gatherPlaceType
+     * @return bool
+     */
+    public function save(GatherPlaceType $gatherPlaceType)
+    {
+        return $gatherPlaceType->save();
     }
 }
