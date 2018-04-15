@@ -7,6 +7,7 @@ use App\Repositories\Interfaces\AreaRepositoryInterface;
 
 /**
  * エリアサービス
+ *
  * Class AreaService
  * @package App\Services
  */
@@ -48,11 +49,11 @@ class AreaService
     /**
      * Idからエリアを取得
      *
-     * @param $id int
+     * @param $areaId int
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function findOrNullById($id)
+    public function findOrNullById($areaId)
     {
-        return $this->areaRepository->findOrNullById($id);
+        return $this->areaRepository->findOrNullById($areaId);
     }
 }

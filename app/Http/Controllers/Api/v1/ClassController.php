@@ -42,12 +42,12 @@ class ClassController extends Controller
     /**
      * /class/{id}のgetアクセス
      *
-     * @param $id
+     * @param int $classId
      * @return ClassResource
      */
-    public function show($id)
+    public function show($classId)
     {
-        $data = $this->classService->findOrNullById($id);
+        $data = $this->classService->findOrNullById($classId);
         if(null === $data){
             throw new NotFoundHttpException();
         }

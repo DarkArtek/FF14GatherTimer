@@ -2,30 +2,30 @@
 
 namespace App\Repositories\Interfaces;
 
-use App\Eloquents\ClassData;
+use App\Eloquents\GatherPlace;
 
-interface ClassRepositoryInterface
+interface GatherPlaceRepositoryInterface
 {
     /**
-     * 全てのクラスを取得
+     * 全ての採取場所を取得
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function findAll();
 
     /**
-     * Idからクラスを取得
+     * Idから採取場所を取得
      *
-     * @param $classId int
+     * @param $gatherPlaceId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findOrNullById($classId);
+    public function findorNullById($gatherPlaceId);
 
     /**
      * レコードの作成もしくは更新
      *
-     * @param ClassData $class
+     * @param GatherPlace $gatherPlace
      * @return bool
      */
-    public function save(ClassData $class);
+    public function save(GatherPlace $gatherPlace);
 }

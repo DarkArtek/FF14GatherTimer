@@ -1,6 +1,8 @@
 <?php
 namespace App\Repositories\Interfaces;
 
+use App\Eloquents\GatherTime;
+
 interface GatherTimeRepositoryInterface
 {
     /**
@@ -13,10 +15,10 @@ interface GatherTimeRepositoryInterface
     /**
      * 採取場所のIdから採取時間を取得
      *
-     * @param $id int
+     * @param $gatherPlaceId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findByPlaceId($id);
+    public function findByPlaceId($gatherPlaceId);
 
     /**
      * アイテムごとの採取時間をすべて取得
@@ -28,8 +30,16 @@ interface GatherTimeRepositoryInterface
     /**
      * アイテムIDからアイテムごとの採取時間をすべて取得
      *
-     * @param $id int
+     * @param $gatherItemId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findItemTimeByItemId($id);
+    public function findItemTimeByItemId($gatherItemId);
+
+    /**
+     * レコードの作成もしくは更新
+     *
+     * @param GatherTime $gatherTime
+     * @return bool
+     */
+    public function save(GatherTime $gatherTime);
 }

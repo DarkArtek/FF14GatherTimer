@@ -2,30 +2,30 @@
 
 namespace App\Repositories\Interfaces;
 
-use App\Eloquents\ClassData;
+use App\Eloquents\GatherItem;
 
-interface ClassRepositoryInterface
+interface GatherItemRepositoryInterface
 {
     /**
-     * 全てのクラスを取得
+     * 全ての採取アイテムを取得
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function findAll();
 
     /**
-     * Idからクラスを取得
+     * Idから採取アイテムを取得
      *
-     * @param $classId int
+     * @param $gatherItemId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findOrNullById($classId);
+    public function findorNullById($gatherItemId);
 
     /**
      * レコードの作成もしくは更新
      *
-     * @param ClassData $class
+     * @param GatherItem $gatherItem
      * @return bool
      */
-    public function save(ClassData $class);
+    public function save(GatherItem $gatherItem);
 }
