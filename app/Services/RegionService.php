@@ -8,7 +8,6 @@ use App\Http\Requests\RegionStoreRequest;
 use App\Http\Requests\RegionUpdateRequest;
 use App\Repositories\Interfaces\RegionRepositoryInterface;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Request;
 
 /**
  * リージョンサービス

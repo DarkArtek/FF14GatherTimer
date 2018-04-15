@@ -14,6 +14,11 @@ trait CreatesApplication
      */
     public function createApplication()
     {
+        // envのキャッシュを読み込まない
+        if (file_exists(__DIR__.'/../bootstrap/cache/config.php')){
+            unlink(__DIR__.'/../bootstrap/cache/config.php');
+        }
+
         $app = require __DIR__.'/../bootstrap/app.php';
 
         $app->make(Kernel::class)->bootstrap();

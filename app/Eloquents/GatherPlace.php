@@ -81,7 +81,6 @@ class GatherPlace extends Model
         }
 
         // 一度Arrayに直し、indexを振りなおす
-        $array = array_values($purifiedItems->unique('id')->all());
-        return collect($array);
+        return collect(array_values($purifiedItems->unique('id')->all()));
     }
 }
