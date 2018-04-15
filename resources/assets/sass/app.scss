@@ -5,22 +5,15 @@
 // Variables
 @import "variables";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// 1. Your custom variables and variable overwrites.
+$global-link-color: #DA7D02;
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+// 2. Import default variables and available mixins.
+@import "~uikit/src/scss/variables-theme.scss";
+@import "~uikit/src/scss/mixins-theme.scss";
 
-.status-success {
-  @extend .alert-success
-}
+// 3. Your custom mixin overwrites.
+@import "mixins-accordion";
 
-.status-error {
-  @extend .alert-danger
-}
-
-.status- {
-  @extend .alert-info
-}
+// 4. Import UIkit.
+@import "~uikit/src/scss/uikit-theme.scss";

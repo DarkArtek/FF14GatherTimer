@@ -2,47 +2,34 @@
 
 @section('content')
 
-    <div class="row justify-content-center">
 
-        <div class="col-md-9">
-            <div class="card">
-                <div class="card-body">
+    <div uk-grid>
+
+        <div class="uk-width-2-3">
+            <div class="uk-card uk-card-default uk-card-body">
                     ここに地図
-                </div>
             </div>
         </div>
 
 
-        <div class="col-md-3 col-md-offset-1">
-            <div class="card">
-                <div id="accordion">
+        <div class="uk-width-1-3">
+            <div class="uk-card uk-card-default">
+                <ul uk-accordion="multiple: true">
                     @foreach($regions as $region)
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse"
-                                        data-target="#collapse{{ $region->id }}"
-                                        aria-expanded="true" aria-controls="collapse{{ $region->id }}">
-                                    {{ $region->name }}
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapse{{ $region->id }}" class="collapse"
-                             aria-labelledby="heading{{ $region->id }}" data-parent="#accordion">
-                            <table class="table table-striped">
-                                <tbody>
-                                @foreach($region->areas as $area)
-                                    <tr>
-                                        <td>
-                                            {{ $area->name }}
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                        <li>
+                            <a class="uk-accordion-title" href="#">{{ $region->name }}</a>
+                            <div class="uk-accordion-content">
+                                <ul class="uk-list uk-list-striped">
+                                    @foreach($region->areas as $area)
+                                    <li>
+                                        {{ $area->name }}
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </li>
                     @endforeach
-                </div>
+                </ul>
 
 
                 <div class="card-body">
