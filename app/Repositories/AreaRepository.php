@@ -64,15 +64,4 @@ class AreaRepository implements AreaRepositoryInterface
     {
         return $area->save();
     }
-
-    /**
-     * レコードの作成もしくは更新
-     *
-     * @param Area $area
-     * @return bool
-     */
-    public function save(Area $area)
-    {
-        return $area->save();
-    }
 }

@@ -37,14 +37,6 @@ interface RegionRepositoryInterface
     public function nameExists($name);
 
     /**
-     * 指定した名前のリージョンが存在するか
-     *
-     * @param $name string
-     * @return bool
-     */
-    public function nameExists($name);
-
-    /**
      * レコードの作成もしくは更新
      *
      * @param Region $region

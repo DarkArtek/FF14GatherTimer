@@ -87,37 +87,4 @@ class RegionRepository implements RegionRepositoryInterface
     {
         return Region::destroy($regionId);
     }
-
-    /**
-     * 指定した名前のリージョンが存在するか
-     *
-     * @param $name string
-     * @return bool
-     */
-    public function nameExists($name)
-    {
-        return $this->region->where('name', $name)->exists();
-    }
-
-    /**
-     * レコードの作成もしくは更新
-     *
-     * @param Region $region
-     * @return bool
-     */
-    public function save(Region $region)
-    {
-        return $region->save();
-    }
-
-    /**
-     * レコードの作成もしくは更新
-     *
-     * @param int $regionId
-     * @return bool
-     */
-    public function destroy(int $regionId)
-    {
-        return Region::destroy($regionId);
-    }
 }

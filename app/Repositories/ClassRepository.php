@@ -54,15 +54,4 @@ class ClassRepository implements ClassRepositoryInterface
     {
         return $class->save();
     }
-
-    /**
-     * レコードの作成もしくは更新
-     *
-     * @param ClassData $class
-     * @return bool
-     */
-    public function save(ClassData $class)
-    {
-        return $class->save();
-    }
 }
