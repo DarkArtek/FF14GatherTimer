@@ -45,11 +45,11 @@ class PurifiedService
     /**
      * Idから精選アイテムを取得
      *
-     * @param $id int
+     * @param $purifiedId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findOrNullById($id)
+    public function findOrNullById($purifiedId)
     {
-        return $this->purifiedRepository->findOrNullById($id);
+        return $this->purifiedRepository->findOrNullById($purifiedId);
     }
 }

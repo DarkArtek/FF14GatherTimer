@@ -46,11 +46,22 @@ class PurifiedRepository implements PurifiedRepositoryInterface
     /**
      * Idから精選アイテムを取得
      *
-     * @param $id int
+     * @param $purifiedId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findOrNullById($id)
+    public function findOrNullById($purifiedId)
     {
-        return $this->purified->find($id);
+        return $this->purified->find($purifiedId);
+    }
+
+    /**
+     * レコードの作成もしくは更新
+     *
+     * @param Purified $purified
+     * @return bool
+     */
+    public function save(Purified $purified)
+    {
+        return $purified->save();
     }
 }

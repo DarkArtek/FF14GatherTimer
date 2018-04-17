@@ -46,11 +46,11 @@ class GatherPlaceTypeService
     /**
      * Idからタイプを取得
      *
-     * @param $id int
+     * @param $gatherPlaceTypeId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findOrNullById($id)
+    public function findOrNullById($gatherPlaceTypeId)
     {
-        return $this->typeRepository->findOrNullById($id);
+        return $this->typeRepository->findOrNullById($gatherPlaceTypeId);
     }
 }

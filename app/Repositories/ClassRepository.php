@@ -36,11 +36,22 @@ class ClassRepository implements ClassRepositoryInterface
     /**
      * Idからクラスを取得
      *
-     * @param $id int
+     * @param $classId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findOrNullById($id)
+    public function findOrNullById($classId)
     {
-        return $this->class->find($id);
+        return $this->class->find($classId);
+    }
+
+    /**
+     * レコードの作成もしくは更新
+     *
+     * @param ClassData $class
+     * @return bool
+     */
+    public function save(ClassData $class)
+    {
+        return $class->save();
     }
 }

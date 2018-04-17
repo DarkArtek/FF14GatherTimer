@@ -1,5 +1,8 @@
 <?php
+
 namespace App\Repositories\Interfaces;
+
+use App\Eloquents\Region;
 
 interface RegionRepositoryInterface
 {
@@ -20,8 +23,24 @@ interface RegionRepositoryInterface
     /**
      * Idからリージョンを取得
      *
-     * @param $id int
+     * @param $regiionId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findOrNullById($id);
+    public function findOrNullById($regiionId);
+
+    /**
+     * 指定した名前のリージョンが存在するか
+     *
+     * @param $name string
+     * @return bool
+     */
+    public function nameExists($name);
+
+    /**
+     * レコードの作成もしくは更新
+     *
+     * @param Region $region
+     * @return bool
+     */
+    public function save(Region $region);
 }

@@ -46,11 +46,22 @@ class AreaRepository implements AreaRepositoryInterface
     /**
      * Idからエリアを取得
      *
-     * @param $id int
+     * @param $areaId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findOrNullById($id)
+    public function findOrNullById($areaId)
     {
-        return $this->area->find($id);
+        return $this->area->find($areaId);
+    }
+
+    /**
+     * レコードの作成もしくは更新
+     *
+     * @param Area $area
+     * @return bool
+     */
+    public function save(Area $area)
+    {
+        return $area->save();
     }
 }

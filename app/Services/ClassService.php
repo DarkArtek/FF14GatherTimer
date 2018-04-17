@@ -36,11 +36,11 @@ class ClassService
     /**
      * Idからクラスを取得
      *
-     * @param $id int
+     * @param $classId int
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function findOrNullById($id)
+    public function findOrNullById($classId)
     {
-        return $this->classRepository->findOrNullById($id);
+        return $this->classRepository->findOrNullById($classId);
     }
 }

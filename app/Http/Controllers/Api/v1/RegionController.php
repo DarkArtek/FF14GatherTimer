@@ -42,12 +42,12 @@ class RegionController extends Controller
     /**
      * /edit/{id}のgetアクセス
      *
-     * @param $id
+     * @param int $regionId
      * @return RegionResource
      */
-    public function show($id)
+    public function show($regionId)
     {
-        $data = $this->regionService->findOrNullById($id);
+        $data = $this->regionService->findOrNullById($regionId);
         if(null === $data){
             throw new NotFoundHttpException();
         }

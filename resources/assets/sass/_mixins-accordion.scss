@@ -1,0 +1,30 @@
+@mixin hook-accordion-title() {
+  padding-left: $global-margin;
+  background-color: $main-color;
+  overflow: hidden;
+  border-bottom: 1px solid $base-color;
+  &:hover {
+    background-color: $main-dark-color;
+  }
+
+  &::after {
+    content: "";
+    width: ($accordion-title-line-height * 1em);
+    height: ($accordion-title-line-height * 1em);
+    float: right;
+    @include svg-fill($internal-accordion-close-image, "#000", $accordion-title-color);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+  &:hover::after {
+    @include svg-fill($internal-accordion-close-image, "#000", $accordion-title-hover-color);
+  }
+
+  .uk-open > &::after {
+    @include svg-fill($internal-accordion-open-image, "#000", $accordion-title-color);
+  }
+  .uk-open > &:hover::after {
+    @include svg-fill($internal-accordion-open-image, "#000", $accordion-title-hover-color);
+  }
+
+}

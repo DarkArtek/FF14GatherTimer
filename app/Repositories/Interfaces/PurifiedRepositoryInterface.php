@@ -1,5 +1,8 @@
 <?php
+
 namespace App\Repositories\Interfaces;
+
+use App\Eloquents\Purified;
 
 interface PurifiedRepositoryInterface
 {
@@ -20,8 +23,16 @@ interface PurifiedRepositoryInterface
     /**
      * Idから精選アイテムを取得
      *
-     * @param $id int
+     * @param $purifiedId int
      * @return null|\Illuminate\Database\Eloquent\Model
      */
-    public function findOrNullById($id);
+    public function findOrNullById($purifiedId);
+
+    /**
+     * レコードの作成もしくは更新
+     *
+     * @param Purified $purified
+     * @return bool
+     */
+    public function save(Purified $purified);
 }
