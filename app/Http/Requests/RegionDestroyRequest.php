@@ -27,6 +27,6 @@ class RegionDestroyRequest extends FormRequest
      */
     public function rules()
     {
-        return RegionValidateRule::GetRules(['id']);
+        return RegionValidateRule::getRules(['id']);
     }
 }

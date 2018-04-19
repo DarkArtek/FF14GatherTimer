@@ -6,6 +6,7 @@
 
 namespace App\Exceptions;
 
-class ConflictException extends ExpectedException {
+class ConflictException extends ExpectedException
+{
     protected $message = 'conflict exception';
 }

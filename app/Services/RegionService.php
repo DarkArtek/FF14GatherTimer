@@ -24,8 +24,7 @@ class RegionService
      */
     public function __construct(
         RegionRepositoryInterface $regionRepository
-    )
-    {
+    ) {
         $this->regionRepository = $regionRepository;
     }
 

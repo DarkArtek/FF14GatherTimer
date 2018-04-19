@@ -24,8 +24,7 @@ class GatherPlaceTypeController extends Controller
      */
     public function __construct(
         GatherPlaceTypeService $gatherPlaceTypeService
-    )
-    {
+    ) {
         $this->gatherPlaceTypeService = $gatherPlaceTypeService;
     }
 
@@ -48,7 +47,7 @@ class GatherPlaceTypeController extends Controller
     public function show($gatherPlaceId)
     {
         $data = $this->gatherPlaceTypeService->findOrNullById($gatherPlaceId);
-        if(null === $data){
+        if (null === $data) {
             throw new NotFoundHttpException();
         }
         return new GatherPlaceTypeResource($data);

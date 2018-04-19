@@ -27,6 +27,6 @@ class RegionUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        return RegionValidateRule::GetAllRules();
+        return RegionValidateRule::getAllRules();
     }
 }

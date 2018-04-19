@@ -24,8 +24,7 @@ class RegionController extends Controller
      */
     public function __construct(
         RegionService $regionService
-    )
-    {
+    ) {
         $this->regionService = $regionService;
     }
 

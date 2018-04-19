@@ -70,7 +70,7 @@ abstract class ApiTestCase extends BaseTestCase
 
         $response = $this->json('GET', $this->uri .'/' . $this->showId);
 
-        if($this->isShowMultiReturn){
+        if ($this->isShowMultiReturn) {
             $structure = ['data' => [$this->dataStructure]];
         } else {
             $structure = ['data' => $this->dataStructure];

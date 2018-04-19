@@ -23,8 +23,7 @@ class PurifiedController extends Controller
      */
     public function __construct(
         PurifiedService $purifiedService
-    )
-    {
+    ) {
         $this->purifiedService = $purifiedService;
     }
 
@@ -47,7 +46,7 @@ class PurifiedController extends Controller
     public function show($purifiedId)
     {
         $data = $this->purifiedService->findOrNullById($purifiedId);
-        if(null === $data){
+        if (null === $data) {
             throw new NotFoundHttpException();
         }
 

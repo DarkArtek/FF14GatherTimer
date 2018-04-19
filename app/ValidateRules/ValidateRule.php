@@ -19,7 +19,7 @@ abstract class ValidateRule
     /**
      * @return array
      */
-    public static function GetAllRules()
+    public static function getAllRules()
     {
         return static::$rules;
     }
@@ -28,7 +28,7 @@ abstract class ValidateRule
      * @param array $allowed
      * @return array
      */
-    public static function GetRules(array $allowed)
+    public static function getRules(array $allowed)
     {
         return array_intersect_key(static::$rules, array_flip($allowed));
     }

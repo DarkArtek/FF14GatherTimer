@@ -27,6 +27,6 @@ class RegionStoreRequest extends FormRequest
      */
     public function rules()
     {
-        return RegionValidateRule::GetRules(['name']);
+        return RegionValidateRule::getRules(['name']);
     }
 }

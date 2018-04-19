@@ -24,8 +24,7 @@ class ClassController extends Controller
      */
     public function __construct(
         ClassService $classService
-    )
-    {
+    ) {
         $this->classService = $classService;
     }
 
@@ -48,7 +47,7 @@ class ClassController extends Controller
     public function show($classId)
     {
         $data = $this->classService->findOrNullById($classId);
-        if(null === $data){
+        if (null === $data) {
             throw new NotFoundHttpException();
         }
 

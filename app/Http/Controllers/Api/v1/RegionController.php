@@ -24,8 +24,7 @@ class RegionController extends Controller
      */
     public function __construct(
         RegionService $regionService
-    )
-    {
+    ) {
         $this->regionService = $regionService;
     }
 
@@ -48,7 +47,7 @@ class RegionController extends Controller
     public function show($regionId)
     {
         $data = $this->regionService->findOrNullById($regionId);
-        if(null === $data){
+        if (null === $data) {
             throw new NotFoundHttpException();
         }
 

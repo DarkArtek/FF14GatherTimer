@@ -23,8 +23,7 @@ class AreaController extends Controller
      */
     public function __construct(
         AreaService $areaService
-    )
-    {
+    ) {
         $this->areaService = $areaService;
     }
 
@@ -48,7 +47,7 @@ class AreaController extends Controller
     public function show($areaId)
     {
         $data = $this->areaService->findOrNullById($areaId);
-        if(null === $data){
+        if (null === $data) {
             throw new NotFoundHttpException();
         }
 

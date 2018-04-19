@@ -65,5 +65,8 @@ jobs:
 
       - run:
           name: Run PhpUnit
-          command: |
-            ./vendor/bin/phpunit
+          command: ./vendor/bin/phpunit
+
+      - run:
+          name: Run Phpcs
+          command: ./vendor/bin/phpcs --standard=./phpcs_ruleset.xml app tests
