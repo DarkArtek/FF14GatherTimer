@@ -6,10 +6,20 @@ $main-dark-color: #4072B3;
 $accent-color: #EB8686;
 $accent-dark-color: darken($accent-color, 20%);
 $sub-accent-color: #384a5c;
+$white-color: #fbfbfb;
 
-  // Body
+//$base-color: #f4f4f4;
+//$base-dark-color: #92bdc5;
+//$main-color: #6cb1c6;
+//$main-dark-color: #369eb3;
+//$accent-color: #EB8686;
+//$accent-dark-color: darken($accent-color, 20%);
+//$sub-accent-color: #384a5c;
+//$white-color: #fbfbfb;
+
+  // Global Color
 $global-background: $base-color;
-
+$global-primary-background: $main-color;
 
 // Typography
 $global-font-size: 0.9rem;
@@ -43,6 +53,9 @@ $navbar-toggle-color: $base-color;
 $navbar-toggle-hover-color: $base-dark-color;
 
 // Buttons
+
+// Card
+$card-default-background: $white-color;
 
 // Panels
 

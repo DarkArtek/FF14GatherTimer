@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\DB;
  */
 class RegionService
 {
+    /**
+     * @var RegionRepositoryInterface
+     */
     protected $regionRepository;
 
     /**
@@ -36,6 +39,16 @@ class RegionService
     public function findAll()
     {
         return $this->regionRepository->findAll();
+    }
+
+    /**
+     * 表示対象のリージョンおよびエリアを取得
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function findIsShow()
+    {
+        return $this->regionRepository->findIsShow();
     }
 
     /**

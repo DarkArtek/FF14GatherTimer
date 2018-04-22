@@ -14,6 +14,13 @@ interface RegionRepositoryInterface
     public function findAll();
 
     /**
+     * 表示対象のリージョンおよびエリアを取得
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function findIsShow();
+
+    /**
      * 採取場所が登録されているリージョンを取得
      *
      * @return \Illuminate\Database\Eloquent\Collection

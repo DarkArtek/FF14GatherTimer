@@ -35,7 +35,7 @@ class EditController extends Controller
         return view(
             'edit.index',
             [
-                'regions' => $this->regionService->findAll(),
+                'regions' => $this->regionService->findIsShow(),
                 'status' => 'success',
                 'message' => '',
             ]

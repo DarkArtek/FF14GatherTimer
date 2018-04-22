@@ -15,6 +15,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '1',
             'patch' => '2.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -23,6 +24,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '1',
             'patch' => '2.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -31,6 +33,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '1',
             'patch' => '2.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -39,6 +42,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '1',
             'patch' => '2.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -47,6 +51,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '1',
             'patch' => '2.x',
             'map' => '5.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -55,6 +60,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '1',
             'patch' => '2.x',
             'map' => '6.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -63,6 +69,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '1',
             'patch' => '2.x',
             'map' => '7.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -71,6 +78,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '1',
             'patch' => '2.x',
             'map' => '8.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -79,6 +87,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '1',
             'patch' => '2.x',
             'map' => '9.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -87,6 +96,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '2',
             'patch' => '2.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -95,6 +105,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '2',
             'patch' => '2.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -103,6 +114,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '2',
             'patch' => '2.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -111,6 +123,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '2',
             'patch' => '2.x',
             'map' => '13.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -119,6 +132,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '2',
             'patch' => '2.x',
             'map' => '14.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -127,6 +141,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '2',
             'patch' => '2.x',
             'map' => '15.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -135,6 +150,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '2',
             'patch' => '2.x',
             'map' => '16.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -143,6 +159,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '3',
             'patch' => '2.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -151,6 +168,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '3',
             'patch' => '2.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -159,6 +177,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '3',
             'patch' => '2.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -167,6 +186,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '3',
             'patch' => '2.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -175,6 +195,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '3',
             'patch' => '2.x',
             'map' => '21.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -183,6 +204,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '3',
             'patch' => '2.x',
             'map' => '22.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -191,6 +213,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '3',
             'patch' => '2.x',
             'map' => '23.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -199,6 +222,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '3',
             'patch' => '2.x',
             'map' => '24.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -207,6 +231,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '3',
             'patch' => '2.x',
             'map' => '25.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -215,6 +240,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '4',
             'patch' => '3.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -223,6 +249,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '4',
             'patch' => '3.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -231,6 +258,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '4',
             'patch' => '3.x',
             'map' => '28.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -239,6 +267,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '4',
             'patch' => '3.x',
             'map' => '29.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -247,6 +276,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '5',
             'patch' => '3.x',
             'map' => '30.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -255,6 +285,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '6',
             'patch' => '3.x',
             'map' => '31.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -263,6 +294,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '6',
             'patch' => '3.x',
             'map' => '32.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -271,6 +303,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '7',
             'patch' => '3.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -279,6 +312,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '7',
             'patch' => '3.x',
             'map' => '34.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -287,6 +321,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '7',
             'patch' => '3.x',
             'map' => '35.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -295,6 +330,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '7',
             'patch' => '3.x',
             'map' => '36.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -303,6 +339,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '8',
             'patch' => '4.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -311,6 +348,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '8',
             'patch' => '4.x',
             'map' => '38.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -319,6 +357,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '8',
             'patch' => '4.x',
             'map' => '39.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -327,6 +366,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '8',
             'patch' => '4.x',
             'map' => '40.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -335,6 +375,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '9',
             'patch' => '4.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -343,6 +384,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '9',
             'patch' => '4.x',
             'map' => '',
+            'is_show' => false,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -351,6 +393,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '10',
             'patch' => '4.x',
             'map' => '43.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -359,6 +402,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '10',
             'patch' => '4.x',
             'map' => '44.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -367,6 +411,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '10',
             'patch' => '4.x',
             'map' => '45.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);
@@ -375,6 +420,7 @@ class AreaMasterSeeder extends Seeder
             'region_id' => '1',
             'patch' => '2.x',
             'map' => '46.png',
+            'is_show' => true,
             'created_at' => new DateTime(),
             'updated_at' => new DateTime(),
         ]);

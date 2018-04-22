@@ -35,6 +35,18 @@ class RegionRepository implements RegionRepositoryInterface
     }
 
     /**
+     * 表示対象のリージョンおよびエリアを取得
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function findIsShow()
+    {
+        return $this->region::with(['areas' => function ($query) {
+            $query->where('is_show', true);
+        }])->where('is_show', true)->get();
+    }
+
+    /**
      * 採取場所が登録されているリージョンを取得
      *
      * @return \Illuminate\Database\Eloquent\Collection
