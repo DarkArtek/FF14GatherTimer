@@ -1,37 +1,37 @@
 <template>
-    <li @click="setArea" @mouseenter="setPointerIcon" @mouseleave="resetMouseIcon">{{ areaName }}</li>
+    <li @click="setArea" @mouseenter="setPointerIcon" @mouseleave="resetMouseIcon">{{ data.name }}</li>
 </template>
 
 <script lang="ts">
     import Vue, {ComponentOptions} from 'vue'
+    import Area from '../../models/Area'
 
-    interface AreaInterface extends Vue {
-        mapSrc: string,
-        areaName: string,
-        setArea(): void,
+    export interface Data extends Vue {
+        data: Area;
     }
 
-    export {
-        AreaInterface as interface
-    }
     export default {
-        props: ['mapSrc', 'areaName'],
+        props: {
+            data: {
+                type: Object,
+                required: true,
+            },
+        },
         data() {
-            return {
-            }
+            return {}
         },
         methods: {
             setArea() {
-                this.$store.commit('setMapSrc', this.mapSrc);
+                this.$store.commit('setArea', this.data);
             },
-            setPointerIcon(){
+            setPointerIcon() {
                 document.body.style.cursor = 'pointer';
             },
-            resetMouseIcon(){
+            resetMouseIcon() {
                 document.body.style.cursor = 'auto';
             }
         }
-    } as ComponentOptions<AreaInterface>;
+    } as ComponentOptions<Data>;
 </script>
 
 <style scoped>

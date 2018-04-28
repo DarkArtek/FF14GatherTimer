@@ -46,4 +46,15 @@ class GatherItem extends Model
     {
         return $this->belongsToMany(Purified::class);
     }
+
+    /**
+     * アイコンのパスを取得
+     *
+     * @param  string $value
+     * @return string
+     */
+    public function getIconAttribute($value): string
+    {
+        return asset('storage/images/item/' . $value);
+    }
 }

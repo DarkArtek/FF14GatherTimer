@@ -38,4 +38,14 @@ class Area extends Model
     {
         return $this->hasMany(GatherPlace::class);
     }
+
+    /**
+     * 地図の取得(map)
+     * @param $value
+     * @return string
+     */
+    public function getMapAttribute($value)
+    {
+        return asset('storage/images/map/' . $value);
+    }
 }

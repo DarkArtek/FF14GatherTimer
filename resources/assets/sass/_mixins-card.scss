@@ -1,0 +1,8 @@
+@mixin hook-card-default-header() {
+  background-color: $main-color;
+
+  .uk-card-title {
+    color: $base-color;
+    text-align: center;
+  }
+}

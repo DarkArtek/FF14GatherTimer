@@ -3,11 +3,20 @@
 @section('content')
     <div uk-grid>
         <div class="uk-width-2-3">
-            <div class="uk-card uk-card-default">
-                <map-image></map-image>
+            <div class=" uk-flex uk-flex-center">
+                <div class="uk-card uk-card-default uk-width-large">
+                    <map-image></map-image>
+                </div>
+            </div>
+
+            <div class="uk-section">
+                <div class="uk-container">
+                    <place-cards></place-cards>
+                </div>
             </div>
         </div>
 
+        {{--サイドバー--}}
         <div class="uk-width-1-3">
             <div class="uk-card uk-card-default">
                 <ul uk-accordion="multiple: true">
@@ -17,8 +26,8 @@
                             <div class="uk-accordion-content">
                                 <ul class="uk-list uk-list-striped">
                                     @foreach($region->areas as $area)
-                                        <area-item area-name="{{ $area->name }}"
-                                                   map-src="{{asset('storage/images/map/' . $area->map)}}"></area-item>
+                                        <area-item :data="{{ $area->toJson() }}">
+                                        </area-item>
                                     @endforeach
                                     <li><a href=""><span uk-icon="icon: plus"></span></a></li>
                                 </ul>
@@ -26,9 +35,7 @@
                         </li>
                     @endforeach
                 </ul>
-
             </div>
-
 
             <div class="uk-card uk-card-default">
                 <div class="uk-card-header">

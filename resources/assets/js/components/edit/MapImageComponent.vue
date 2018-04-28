@@ -1,5 +1,5 @@
 <template>
-    <img :src='this.$store.state.mapSrc'/>
+    <img :src='this.$store.state.area.map'/>
 </template>
 
 <script lang="ts">

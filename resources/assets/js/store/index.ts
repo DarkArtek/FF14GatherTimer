@@ -5,11 +5,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     mutations: {
-        setMapSrc(state, newSrc) {
-            state.mapSrc = newSrc;
+        setArea(state, newArea) {
+            state.area = newArea;
         },
     },
     state: {
-        mapSrc: "",
+        area: "",
     },
 });

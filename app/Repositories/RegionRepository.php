@@ -43,7 +43,7 @@ class RegionRepository implements RegionRepositoryInterface
     {
         return $this->region::with(['areas' => function ($query) {
             $query->where('is_show', true);
-        }])->where('is_show', true)->get();
+        },'areas.gatherPlaces','areas.gatherPlaces.gatherItems'])->where('is_show', true)->get();
     }
 
     /**
