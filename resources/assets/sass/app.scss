@@ -15,6 +15,11 @@ $global-link-color: #da7d02;
 // 3. Your custom mixin overwrites.
 @import 'mixins-accordion';
 @import 'mixins-card';
+@import 'mixins-marker';
 
 // 4. Import UIkit.
 @import "~uikit/src/scss/uikit-theme.scss";
+
+// 5． 上記以外
+@import 'area-list';
+@import 'place-card';

@@ -1,0 +1,25 @@
+.place-card {
+  &:hover {
+    cursor: pointer;
+  }
+
+  .uk-card-header {
+    padding: 5px;
+  }
+
+  .uk-list {
+    margin: 0;
+
+    li {
+      align-items: center;
+      display: flex;
+      height: $global-font-size * 1.5;
+      padding: 0;
+    }
+
+    img {
+      margin-right: $global-small-margin;
+      width: $global-font-size * 1.5;
+    }
+  }
+}

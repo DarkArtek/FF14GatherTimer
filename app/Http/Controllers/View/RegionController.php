@@ -30,9 +30,10 @@ class RegionController extends Controller
 
     /**
      * /regionのPOSTアクセス
-     * @param Request $request
+     * @param RegionStoreRequest $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \App\Exceptions\ConflictException
+     * @throws \Exception
+     * @throws \Throwable
      */
     public function store(RegionStoreRequest $request)
     {

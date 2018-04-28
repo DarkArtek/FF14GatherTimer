@@ -1,5 +1,5 @@
 <template>
-    <li @click="setArea" @mouseenter="setPointerIcon" @mouseleave="resetMouseIcon">{{ data.name }}</li>
+    <li @click="setArea">{{ data.name }}</li>
 </template>
 
 <script lang="ts">
@@ -24,12 +24,6 @@
             setArea() {
                 this.$store.commit('setArea', this.data);
             },
-            setPointerIcon() {
-                document.body.style.cursor = 'pointer';
-            },
-            resetMouseIcon() {
-                document.body.style.cursor = 'auto';
-            }
         }
     } as ComponentOptions<Data>;
 </script>
