@@ -23,7 +23,11 @@ class AreaResource extends Resource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name
+            'name' => $this->name,
+            'region_id' => $this->region_id,
+            'patch' => $this->patch,
+            'map' => $this->map,
+            'is_show' => $this->is_show,
         ];
     }
 }

@@ -28,4 +28,22 @@ interface GatherItemRepositoryInterface
      * @return bool
      */
     public function save(GatherItem $gatherItem);
+
+
+    /**
+     * レコードの削除
+     *
+     * @param GatherItem $gatherItem
+     * @return bool
+     * @throws \Exception
+     */
+    public function delete(GatherItem $gatherItem);
+
+    /**
+     * primaryIdからレコードの削除
+     *
+     * @param array $gatherItemIds
+     * @return bool
+     */
+    public function deleteByIds(array $gatherItemIds);
 }

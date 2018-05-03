@@ -11,6 +11,7 @@
     }
 
     export default {
+        name: "area-item",
         props: {
             data: {
                 type: Object,

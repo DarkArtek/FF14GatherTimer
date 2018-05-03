@@ -64,4 +64,27 @@ class GatherPlaceTypeRepository implements GatherPlaceTypeRepositoryInterface
     {
         return $gatherPlaceType->save();
     }
+
+    /**
+     * レコードの削除
+     *
+     * @param GatherPlaceType $gatherPlaceType
+     * @return bool
+     * @throws \Exception
+     */
+    public function delete(GatherPlaceType $gatherPlaceType)
+    {
+        return $gatherPlaceType->delete();
+    }
+
+    /**
+     * プライマリIDからレコードの削除
+     *
+     * @param int $gatherPlaceTypeId
+     * @return bool
+     */
+    public function deleteById(int $gatherPlaceTypeId)
+    {
+        return GatherPlaceType::destroy($gatherPlaceTypeId);
+    }
 }

@@ -18,6 +18,7 @@ class CreateRegionMaster extends Migration
             $table->string('name');
             $table->boolean('is_show')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

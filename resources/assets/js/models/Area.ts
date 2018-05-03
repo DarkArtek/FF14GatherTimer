@@ -6,5 +6,6 @@ export default interface InterfaceArea extends Vue {
     region_id: number;
     patch: string;
     map: string;
+    is_show: boolean;
     gather_places: GatherPlace[];
 }

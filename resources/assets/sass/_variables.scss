@@ -8,6 +8,7 @@ $accent-dark-color: darken($accent-color, 20%);
 $sub-accent-color: #384a5c;
 $white-color: #fbfbfb;
 $hover-color: #e2e8f5;
+$deleted-color: #d2d3d9;
 
 //$base-color: #f4f4f4;
 //$base-dark-color: #92bdc5;
@@ -21,6 +22,10 @@ $hover-color: #e2e8f5;
 // Global Color
 $global-background: $base-color;
 $global-primary-background: $main-color;
+$global-danger-color: $accent-color;
+$text-danger-color: $accent-color;
+$table-row-active-background: $base-dark-color;
+$global-link-color: #da7d02;
 
 // Typography
 $global-font-size: 14px;

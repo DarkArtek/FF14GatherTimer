@@ -44,71 +44,17 @@ abstract class ApiTestCase extends BaseTestCase
      * 正常系 Structureテスト
      * getリクエスト
      */
-    public function testIndexStructure()
+    public function testIndexSuccess()
     {
-        $this->createTestData();
         Passport::actingAs(
             factory(User::class)->create(),
             ['create-servers']
         );
 
-        $response = $this->json('GET', $this->uri);
-        $response->assertJsonStructure(['data' => [$this->dataStructure]]);
-    }
-
-    /**
-     * 正常系 Structureテスト
-     * {id}のgetリクエスト
-     */
-    public function testShowStructure()
-    {
         $this->createTestData();
-        Passport::actingAs(
-            factory(User::class)->create(),
-            ['create-servers']
-        );
-
-        $response = $this->json('GET', $this->uri .'/' . $this->showId);
-
-        if ($this->isShowMultiReturn) {
-            $structure = ['data' => [$this->dataStructure]];
-        } else {
-            $structure = ['data' => $this->dataStructure];
-        }
-
-        $response->assertJsonStructure($structure);
-    }
-
-    /**
-     * 正常系 Statusテスト
-     * getリクエスト
-     */
-    public function testIndexSuccessStatus()
-    {
-        $this->createTestData();
-        Passport::actingAs(
-            factory(User::class)->create(),
-            ['create-servers']
-        );
-
-        $response = $this->json('GET', $this->uri);
-        $response->assertStatus(200);
-    }
-
-    /**
-     * 正常系 Statusテスト
-     * /{id}のgetリクエスト
-     */
-    public function testShowSuccessStatus()
-    {
-        $this->createTestData();
-        Passport::actingAs(
-            factory(User::class)->create(),
-            ['create-servers']
-        );
-
-        $response = $this->json('GET', $this->uri .'/' . $this->showId);
-        $response->assertStatus(200);
+        $this->json('GET', $this->uri)
+            ->assertJsonStructure(['data' => [$this->dataStructure]])
+            ->assertStatus(200);
     }
 
     /**
@@ -118,12 +64,34 @@ abstract class ApiTestCase extends BaseTestCase
     public function testIndexUnauthenticated()
     {
         $this->createTestData();
-        $response = $this->json('GET', $this->uri);
-        $response
+        $this->json('GET', $this->uri)
             ->assertStatus(401)
             ->assertExactJson([
                 'message' => 'Unauthenticated.',
             ]);
+    }
+
+    /**
+     * 正常系 Structureテスト
+     * {id}のgetリクエスト
+     */
+    public function testShowSuccess()
+    {
+        Passport::actingAs(
+            factory(User::class)->create(),
+            ['create-servers']
+        );
+
+        if ($this->isShowMultiReturn) {
+            $structure = ['data' => [$this->dataStructure]];
+        } else {
+            $structure = ['data' => $this->dataStructure];
+        }
+
+        $this->createTestData();
+        $this->json('GET', $this->uri .'/' . $this->showId)
+            ->assertJsonStructure($structure)
+            ->assertStatus(200);
     }
 
     /**
@@ -152,8 +120,7 @@ abstract class ApiTestCase extends BaseTestCase
             ['create-servers']
         );
 
-        $response = $this->json('GET', $this->uri . '/1');
-        $response
+        $this->json('GET', $this->uri . '/1')
             ->assertStatus(404)
             ->assertExactJson([
                 'message' => '',

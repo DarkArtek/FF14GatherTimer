@@ -14,6 +14,13 @@ interface RegionRepositoryInterface
     public function findAll();
 
     /**
+     * 全ての情報を取得
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function findAllInfo();
+
+    /**
      * 表示対象のリージョンおよびエリアを取得
      *
      * @return \Illuminate\Database\Eloquent\Collection
@@ -50,4 +57,13 @@ interface RegionRepositoryInterface
      * @return bool
      */
     public function save(Region $region);
+
+    /**
+     * レコードの削除
+     *
+     * @param Region $region
+     * @return bool|null
+     * @throws \Exception
+     */
+    public function delete(Region $region);
 }

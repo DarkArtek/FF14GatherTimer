@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Eloquents\Area;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AreaStoreRequest;
 use App\Http\Resources\v1\AreaResource;
 use App\Services\AreaService;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -14,17 +16,19 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class AreaController extends Controller
 {
-
-    private $areaService;
+    /**
+     * @var AreaService
+     */
+    private $service;
 
     /**
      * AreaController constructor.
-     * @param AreaService $areaService
+     * @param AreaService $service
      */
     public function __construct(
-        AreaService $areaService
+        AreaService $service
     ) {
-        $this->areaService = $areaService;
+        $this->service = $service;
     }
 
     /**
@@ -34,7 +38,7 @@ class AreaController extends Controller
      */
     public function index()
     {
-        return AreaResource::collection($this->areaService->findExistsGatherPlace());
+        return AreaResource::collection($this->service->findExistsGatherPlace());
     }
 
     /**
@@ -46,11 +50,36 @@ class AreaController extends Controller
      */
     public function show($areaId)
     {
-        $data = $this->areaService->findOrNullById($areaId);
+        $data = $this->service->findOrNullById($areaId);
         if (null === $data) {
             throw new NotFoundHttpException();
         }
 
         return new AreaResource($data);
+    }
+
+    /**
+     * /areaのPOSTアクセス
+     * @param AreaStoreRequest $request
+     * @return AreaResource
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function store(AreaStoreRequest $request)
+    {
+        return new AreaResource(
+            $this->service->store($request)
+        );
+    }
+
+    /**
+     * /areaのDELETEアクセス
+     * @param Area $area
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function destroy(Area $area): void
+    {
+        $this->service->delete($area);
     }
 }

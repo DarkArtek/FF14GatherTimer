@@ -9,4 +9,5 @@ export default interface InterfaceGatherItem extends Vue {
     memo: string;
     icon: string;
     icon_path: string;
+    shelf_id: number;
 }

@@ -7,27 +7,27 @@
 <template>
     <div>
         <div>
-            <div class="card card-default">
-                <div class="card-header">
+            <div class="uk-card uk-card-default">
+                <div class="uk-card-header">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <span>
                             Personal Access Tokens
                         </span>
 
-                        <a class="action-link" tabindex="-1" @click="showCreateTokenForm">
+                        <a class="action-link" uk-toggle="target: #modal-create-token">
                             Create New Token
                         </a>
                     </div>
                 </div>
 
-                <div class="card-body">
+                <div class="uk-card-body">
                     <!-- No Tokens Notice -->
                     <p class="mb-0" v-if="tokens.length === 0">
                         You have not created any personal access tokens.
                     </p>
 
                     <!-- Personal Access Tokens -->
-                    <table class="table table-borderless mb-0" v-if="tokens.length > 0">
+                    <table class="uk-table mb-0" v-if="tokens.length > 0">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -56,18 +56,17 @@
         </div>
 
         <!-- Create Token Modal -->
-        <div class="modal fade" id="modal-create-token" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
+        <div class="modal fade" id="modal-create-token" uk-modal>
+            <div class="uk-modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">
+                    <div class="uk-modal-header">
+                        <h4 class="uk-modal-title">
                             Create Token
                         </h4>
 
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
 
-                    <div class="modal-body">
+                    <div class="uk-modal-body">
                         <!-- Form Errors -->
                         <div class="alert alert-danger" v-if="form.errors.length > 0">
                             <p class="mb-0"><strong>Whoops!</strong> Something went wrong!</p>
@@ -86,7 +85,7 @@
                                 <label class="col-md-4 col-form-label">Name</label>
 
                                 <div class="col-md-6">
-                                    <input id="create-token-name" type="text" class="form-control" name="name" v-model="form.name">
+                                    <input id="create-token-name" type="text" class="form-control uk-input" name="name" v-model="form.name">
                                 </div>
                             </div>
 
@@ -112,10 +111,10 @@
                     </div>
 
                     <!-- Modal Actions -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <div class="uk-modal-footer">
+                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
 
-                        <button type="button" class="btn btn-primary" @click="store">
+                        <button type="button" class="uk-button uk-button-primary" @click="store">
                             Create
                         </button>
                     </div>
@@ -124,18 +123,18 @@
         </div>
 
         <!-- Access Token Modal -->
-        <div class="modal fade" id="modal-access-token" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">
+        <div class="uk-modal fade" id="modal-access-token" tabindex="-1" role="dialog">
+            <div class="uk-modal-dialog">
+                <div class="uk-modal-content">
+                    <div class="uk-modal-header">
+                        <h4 class="uk-modal-title">
                             Personal Access Token
                         </h4>
 
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
 
-                    <div class="modal-body">
+                    <div class="uk-modal-body">
                         <p>
                             Here is your new personal access token. This is the only time it will be shown so don't lose it!
                             You may now use this token to make API requests.
@@ -145,8 +144,9 @@
                     </div>
 
                     <!-- Modal Actions -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <div class="uk-modal-footer">
+
+                        <button class="uk-button uk-button-default uk-modal-close" type="button">Close</button>
                     </div>
                 </div>
             </div>
@@ -155,6 +155,7 @@
 </template>
 
 <script>
+    import UIkit from "uikit";
     export default {
         /*
          * The component's data.
@@ -196,9 +197,9 @@
                 this.getTokens();
                 this.getScopes();
 
-                $('#modal-create-token').on('shown.bs.modal', () => {
-                    $('#create-token-name').focus();
-                });
+                // $('#modal-create-token').on('shown.bs.modal', () => {
+                //     $('#create-token-name').focus();
+                // });
             },
 
             /**
@@ -219,13 +220,6 @@
                         .then(response => {
                             this.scopes = response.data;
                         });
-            },
-
-            /**
-             * Show the form for creating new tokens.
-             */
-            showCreateTokenForm() {
-                $('#modal-create-token').modal('show');
             },
 
             /**
@@ -277,11 +271,11 @@
              * Show the given access token to the user.
              */
             showAccessToken(accessToken) {
-                $('#modal-create-token').modal('hide');
+                UIkit.modal('#modal-create-token').hide();
 
                 this.accessToken = accessToken;
 
-                $('#modal-access-token').modal('show');
+                UIkit.modal('#modal-access-token').show();
             },
 
             /**

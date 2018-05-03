@@ -35,4 +35,21 @@ interface GatherPlaceTypeRepositoryInterface
      * @return bool
      */
     public function save(GatherPlaceType $gatherPlaceType);
+
+    /**
+     * レコードの削除
+     *
+     * @param GatherPlaceType $gatherPlaceType
+     * @return bool
+     * @throws \Exception
+     */
+    public function delete(GatherPlaceType $gatherPlaceType);
+
+    /**
+     * プライマリIDからレコードの削除
+     *
+     * @param int $gatherPlaceTypeId
+     * @return bool
+     */
+    public function deleteById(int $gatherPlaceTypeId);
 }

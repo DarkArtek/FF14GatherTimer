@@ -1,6 +1,6 @@
 <template>
     <div class="uk-grid-match uk-child-width-1-3@l uk-child-width-1-2@m" uk-grid>
-        <div v-for="gatherPlace in this.$store.state.area.gather_places">
+        <div v-for="gatherPlace in this.$store.state.viewArea.gather_places">
             <div class="uk-card uk-card-default uk-card-hover place-card">
                 <div class="uk-card-header">
                     <h3 class="uk-card-title">
@@ -13,7 +13,7 @@
                 <ul class="uk-list uk-list-striped">
                     <li v-for="n in 8">
                         <template v-for="gatherItem in gatherPlace.gather_items">
-                            <template v-if="gatherItem.pivot.shelf_id === n">
+                            <template v-if="gatherItem.shelf_id === n">
                                 <img :src="gatherItem.icon">
                                 <span>{{gatherItem.name}}</span>
                             </template>
@@ -33,7 +33,3 @@
         },
     };
 </script>
-
-<style scoped>
-
-</style>

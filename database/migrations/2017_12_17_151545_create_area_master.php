@@ -21,6 +21,7 @@ class CreateAreaMaster extends Migration
             $table->string('map');
             $table->boolean('is_show')->default(true);
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('region_id')->references('id')->on('region_master');
 
         });

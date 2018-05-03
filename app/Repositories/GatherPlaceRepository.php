@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories;
 
 use App\Eloquents\GatherPlace;
@@ -23,7 +24,7 @@ class GatherPlaceRepository implements GatherPlaceRepositoryInterface
     }
 
     /**
-    /**
+     * /**
      * 全ての採取場所を取得
      *
      * @return \Illuminate\Database\Eloquent\Collection
@@ -45,6 +46,16 @@ class GatherPlaceRepository implements GatherPlaceRepositoryInterface
     }
 
     /**
+     * Idから採取場所を取得
+     * @param array $areaIds
+     * @return $this|GatherPlace
+     */
+    public function findByAreaIds(array $areaIds)
+    {
+        return $this->gatherPlace->whereIn('area_id', $areaIds);
+    }
+
+    /**
      * レコードの作成もしくは更新
      *
      * @param GatherPlace $gatherPlace
@@ -53,5 +64,28 @@ class GatherPlaceRepository implements GatherPlaceRepositoryInterface
     public function save(GatherPlace $gatherPlace)
     {
         return $gatherPlace->save();
+    }
+
+    /**
+     * レコードの削除
+     *
+     * @param GatherPlace $gatherPlace
+     * @return bool
+     * @throws \Exception
+     */
+    public function delete(GatherPlace $gatherPlace)
+    {
+        return $gatherPlace->delete();
+    }
+
+    /**
+     * プライマリIDからレコードの削除
+     *
+     * @param array $gatherPlaceIds
+     * @return bool
+     */
+    public function deleteByIds(array $gatherPlaceIds)
+    {
+        return GatherPlace::destroy($gatherPlaceIds);
     }
 }

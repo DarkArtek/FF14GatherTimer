@@ -5,9 +5,6 @@
 // Variables
 @import 'variables';
 
-// 1. Your custom variables and variable overwrites.
-$global-link-color: #da7d02;
-
 // 2. Import default variables and available mixins.
 @import "~uikit/src/scss/variables-theme.scss";
 @import "~uikit/src/scss/mixins-theme.scss";
@@ -23,3 +20,9 @@ $global-link-color: #da7d02;
 // 5． 上記以外
 @import 'area-list';
 @import 'place-card';
+@import 'table';
+@import 'text';
+
+html {
+  overflow-y: scroll;
+}

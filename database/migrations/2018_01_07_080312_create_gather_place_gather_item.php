@@ -19,6 +19,7 @@ class CreateGatherPlaceGatherItem extends Migration
             $table->integer('gather_item_id')->unsigned();
             $table->integer('shelf_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('gather_place_id')->references('id')->on('gather_place');
             $table->foreign('gather_item_id')->references('id')->on('gather_item');
             $table->foreign('shelf_id')->references('id')->on('shelf_master');

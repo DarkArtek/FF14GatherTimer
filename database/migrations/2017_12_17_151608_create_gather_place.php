@@ -24,6 +24,7 @@ class CreateGatherPlace extends Migration
             $table->string('memo')->nullable();
             $table->string('place_point', 10)->nullable();
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('class_id')->references('id')->on('class_master');
             $table->foreign('gather_place_type_id')->references('id')->on('gather_place_type_master');
             $table->foreign('area_id')->references('id')->on('area_master');

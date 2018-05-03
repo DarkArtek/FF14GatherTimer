@@ -3,6 +3,7 @@
 namespace App\Eloquents;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * リージョン
@@ -11,6 +12,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Region extends Model
 {
+    use SoftDeletes;
+
+    /**
+     * @var array 日付へキャストする属性
+     */
+    protected $dates = ['deleted_at'];
+
     /**
      * @var string テーブル名
      */
@@ -19,7 +27,7 @@ class Region extends Model
     /**
      * @var array 編集可能なカラム
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'is_show'];
 
     /**
      * エリアを取得
@@ -29,7 +37,14 @@ class Region extends Model
     {
         return $this->hasMany(Area::class);
     }
-
+    /**
+     * エリアを取得
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function areasWithTrashed()
+    {
+        return $this->hasMany(Area::class)->withTrashed();
+    }
     /**
      * 採取場所を取得
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough

@@ -51,5 +51,13 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Interfaces\PurifiedRepositoryInterface::class,
             \App\Repositories\PurifiedRepository::class
         );
+        $this->app->bind(
+            \App\Repositories\Interfaces\GatherPlaceGatherItemRepositoryInterface::class,
+            \App\Repositories\GatherPlaceGatherItemRepository::class
+        );
+        $this->app->bind(
+            \App\Repositories\Interfaces\GatherPlaceRepositoryInterface::class,
+            \App\Repositories\GatherPlaceRepository::class
+        );
     }
 }
