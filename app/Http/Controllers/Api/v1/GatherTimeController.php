@@ -36,7 +36,9 @@ class GatherTimeController extends Controller
      */
     public function index()
     {
-        return GatherTimeResource::collection($this->gatherTimeService->findPlaceTimeAll());
+        return GatherTimeResource::collection(
+            $this->gatherTimeService->findPlaceTimeAll()
+        );
     }
 
     /**

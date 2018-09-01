@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Resources\v1;
+namespace App\Http\Resources\v1\GatherTime;
 
+use App\Http\Resources\v1\PurifiedResource;
 use Illuminate\Http\Resources\Json\Resource;
 
 /**
- * エリアリソース
+ * 採取アイテムリソース
  *
- * Class AreaResource
+ * Class GatherItemResource
  * @package App\Http\Resources\v1
  */
-class AreaResource extends Resource
+class GatherItemResource extends Resource
 {
     /**
      * リソースを配列へ変換する
@@ -19,15 +20,13 @@ class AreaResource extends Resource
      * @return array
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function toArray($request): array
+    public function toArray($request)
     {
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'region_id' => $this->region_id,
-            'patch' => $this->patch,
-            'map' => $this->map,
-            'is_show' => $this->is_show,
+            'shelf_id' => $this->pivot->shelf_id,
+            'purified_items' => PurifiedResource::collection($this->purifiedItems),
         ];
     }
 }

@@ -1,0 +1,7 @@
+@mixin hook-modal-header() {
+  background-color: $main-color;
+}
+
+@mixin hook-modal-title() {
+  color: $white-color;
+}

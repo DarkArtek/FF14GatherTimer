@@ -10,7 +10,7 @@
 
             <button type="button" class="uk-button uk-button-small uk-button-primary uk-margin-small-top"
                     v-bind:class="{ 'uk-animation-shake': errorAnimation }" @click="store">
-                Save
+                保存
             </button>
         </fieldset>
     </form>

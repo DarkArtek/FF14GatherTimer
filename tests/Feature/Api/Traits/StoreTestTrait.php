@@ -41,13 +41,13 @@ trait StoreTestTrait
      * 異常系
      * 非認証
      */
-    public function testStoreUnauthenticated()
-    {
-        $this->createTestData();
-        $response = $this->json('POST', $this->uri);
-        $response->assertStatus(401)
-            ->assertExactJson([
-                'message' => 'Unauthenticated.',
-            ]);
-    }
+//    public function testStoreUnauthenticated()
+//    {
+//        $this->createTestData();
+//        $response = $this->json('POST', $this->uri);
+//        $response->assertStatus(401)
+//            ->assertExactJson([
+//                'message' => 'Unauthenticated.',
+//            ]);
+//    }
 }

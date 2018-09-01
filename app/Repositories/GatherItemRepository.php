@@ -12,17 +12,6 @@ use App\Repositories\Interfaces\GatherItemRepositoryInterface;
  */
 class GatherItemRepository implements GatherItemRepositoryInterface
 {
-    protected $gatherItem;
-
-    /**
-     * GatherItemRepository constructor.
-     * @param GatherItem $gatherItem
-     */
-    public function __construct(GatherItem $gatherItem)
-    {
-        $this->gatherItem = $gatherItem;
-    }
-
     /**
      * /**
      * 全ての採取アイテムを取得
@@ -31,7 +20,7 @@ class GatherItemRepository implements GatherItemRepositoryInterface
      */
     public function findAll()
     {
-        return $this->gatherItem::all();
+        return GatherItem::all();
     }
 
     /**
@@ -42,7 +31,7 @@ class GatherItemRepository implements GatherItemRepositoryInterface
      */
     public function findOrNullById($gatherItemId)
     {
-        return $this->gatherItem->find($gatherItemId);
+        return GatherItem::find($gatherItemId);
     }
 
     /**

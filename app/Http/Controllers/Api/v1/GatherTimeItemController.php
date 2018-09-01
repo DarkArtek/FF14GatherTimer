@@ -32,9 +32,11 @@ class GatherTimeItemController extends Controller
      *
      * @return AnonymousResourceCollection
      */
-    public function index(): AnonymousResourceCollection
+    public function index()
     {
-        return GatherTimeResource::collection($this->gatherTimeService->findItemTimeAll());
+        return GatherTimeResource::collection(
+            $this->gatherTimeService->findItemTimeAll()
+        );
     }
 
     /**
@@ -44,7 +46,7 @@ class GatherTimeItemController extends Controller
      * @return AnonymousResourceCollection
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      */
-    public function show($itemId): AnonymousResourceCollection
+    public function show($itemId)
     {
         $data = $this->gatherTimeService->findItemTimeByItemId($itemId);
         if (null === $data) {

@@ -24,7 +24,14 @@ class GatherItemResource extends Resource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'shelf_id' => $this->pivot->shelf_id,
+            'level' => $this->level,
+            'star' => $this->star,
+            'is_limit' => $this->is_limit,
+            'patch' => $this->patch,
+            'memo' => $this->memo,
+            'icon' => $this->icon,
+            'discernment' => $this->discernment,
+            'deleted_at' => $this->deleted_at,
             'purified_items' => PurifiedResource::collection($this->purifiedItems),
         ];
     }

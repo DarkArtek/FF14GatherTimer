@@ -22,6 +22,7 @@ class CreateGatherItem extends Migration
             $table->string('patch', 4);
             $table->string('memo')->nullable();
             $table->string('icon')->nullable();
+            $table->integer('discernment')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

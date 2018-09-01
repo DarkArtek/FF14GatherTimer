@@ -12,7 +12,9 @@
 // 3. Your custom mixin overwrites.
 @import 'mixins-accordion';
 @import 'mixins-card';
+@import 'mixins-form';
 @import 'mixins-marker';
+@import 'mixins-modal';
 
 // 4. Import UIkit.
 @import "~uikit/src/scss/uikit-theme.scss";
