@@ -13,17 +13,22 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
-    Route::apiResource('/area', 'Api\v1\AreaController', ['only' => ['index', 'show', 'store', 'destroy']]);
-    Route::apiResource('/region', 'Api\v1\RegionController', ['only' => ['index', 'show', 'store', 'destroy']]);
+Route::group(['prefix' => 'v1'], function () {
+
+    Route::group(['middleware' => ['auth:api']], function () {
+        Route::get('/user', function (Request $request) {
+            return $request->user();
+        });
+        Route::apiResource('/area', 'Api\v1\AreaController', ['only' => ['store', 'destroy']]);
+        Route::apiResource('/region', 'Api\v1\RegionController', ['only' => ['store', 'destroy']]);
+    });
+
+    Route::apiResource('/area', 'Api\v1\AreaController', ['only' => ['index', 'show']]);
+    Route::apiResource('/region', 'Api\v1\RegionController', ['only' => ['index', 'show']]);
     Route::apiResource('/gatherPlaceType', 'Api\v1\GatherPlaceTypeController', ['only' => ['index', 'show']]);
     Route::apiResource('/class', 'Api\v1\ClassController', ['only' => ['index', 'show']]);
     Route::apiResource('/purified', 'Api\v1\PurifiedController', ['only' => ['index', 'show']]);
     Route::apiResource('/gatherTime/item', 'Api\v1\GatherTimeItemController', ['only' => ['index', 'show']]);
     Route::apiResource('/gatherTime', 'Api\v1\GatherTimeController', ['only' => ['index', 'show']]);
     Route::apiResource('/master', 'Api\v1\MasterController', ['only' => ['index', 'show']]);
-
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
 });

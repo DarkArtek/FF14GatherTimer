@@ -58,17 +58,14 @@ abstract class ApiTestCase extends BaseTestCase
     }
 
     /**
-     * 異常系
      * 非認証
      */
     public function testIndexUnauthenticated()
     {
         $this->createTestData();
         $this->json('GET', $this->uri)
-            ->assertStatus(401)
-            ->assertExactJson([
-                'message' => 'Unauthenticated.',
-            ]);
+            ->assertJsonStructure(['data' => [$this->dataStructure]])
+            ->assertStatus(200);
     }
 
     /**
@@ -95,18 +92,20 @@ abstract class ApiTestCase extends BaseTestCase
     }
 
     /**
-     * 異常系
      * 非認証
      */
     public function testShowUnauthenticated()
     {
+        if ($this->isShowMultiReturn) {
+            $structure = ['data' => [$this->dataStructure]];
+        } else {
+            $structure = ['data' => $this->dataStructure];
+        }
+
         $this->createTestData();
-        $response = $this->json('GET', $this->uri . '/' . $this->showId);
-        $response
-            ->assertStatus(401)
-            ->assertExactJson([
-                'message' => 'Unauthenticated.',
-            ]);
+        $this->json('GET', $this->uri .'/' . $this->showId)
+            ->assertJsonStructure($structure)
+            ->assertStatus(200);
     }
 
     /**
