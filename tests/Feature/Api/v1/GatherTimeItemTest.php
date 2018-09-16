@@ -7,6 +7,7 @@
 
 namespace Tests\Feature\Api\v1;
 
+use App\Eloquents\GatherItem;
 use App\Eloquents\GatherPlace;
 use App\Eloquents\GatherTime;
 use Tests\Feature\Api\ApiTestCase;
@@ -68,6 +69,6 @@ class GatherTimeItemTest extends ApiTestCase
     {
         parent::createTestData();
         factory(GatherTime::class, 10)->create();
-        $this->showId = GatherTime::first()->id;
+        $this->showId = GatherItem::first()->id;
     }
 }

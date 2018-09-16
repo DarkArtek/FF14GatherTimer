@@ -1,46 +1,25 @@
-import Vue from 'vue';
-import UIkit from 'uikit';
-import Icons from 'uikit/dist/js/uikit-icons';
+import UIkit from "uikit";
+import Icons from "uikit/dist/js/uikit-icons";
+import Vue from "vue";
+import Vuex from "vuex";
+import bootstrap from "./bootstrap";
+import edit from "./components/edit/EditComponent.vue";
+import passportAuthorizedClients from "./components/passport/AuthorizedClients.vue";
+import passportClients from "./components/passport/PassportClients.vue";
+import passportPersonalAccessTokens from "./components/passport/PersonalAccessTokens.vue";
+import store from "./store";
 
-// loads the Icon plugin
+bootstrap();
 UIkit.use(Icons);
+Vue.use(Vuex);
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-// require('./bootstrap');
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-Vue.component(
-    'example-component',
-    require('./components/ExampleComponent.vue')
-);
-
-Vue.component(
-    'passport-clients',
-    require('./components/passport/Clients.vue')
-);
-
-Vue.component(
-    'passport-authorized-clients',
-    require('./components/passport/AuthorizedClients.vue')
-);
-
-Vue.component(
-    'passport-personal-access-tokens',
-    require('./components/passport/PersonalAccessTokens.vue')
-);
-
-const app = new Vue({
-    el: '#app'
+new Vue({
+    components: {
+        "edit": edit,
+        "passport-authorized-clients": passportAuthorizedClients,
+        "passport-clients": passportClients,
+        "passport-personal-access-tokens": passportPersonalAccessTokens,
+    },
+    el: "#app",
+    store,
 });
-
-
-

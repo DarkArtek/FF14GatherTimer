@@ -18,6 +18,7 @@ class CreateShelfMaster extends Migration
             $table->string('name');
             $table->boolean('is_hidden')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

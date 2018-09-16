@@ -1,53 +1,45 @@
 @extends('layouts.app')
 
 @section('content')
+    <edit></edit>
+    {{--<div uk-grid>--}}
+        {{--<div class="uk-width-3-4">--}}
+            {{--<map-image></map-image>--}}
+            {{--<div class="uk-section">--}}
+                {{--<div class="uk-container">--}}
+                    {{--<place-cards></place-cards>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
 
+        {{--サイドバー--}}
+        {{--<div class="uk-width-1-4">--}}
+            {{--<div class="uk-card uk-card-default">--}}
+                {{--<ul uk-accordion="multiple: true">--}}
+                    {{--@foreach($regions as $region)--}}
+                        {{--<li>--}}
+                            {{--<a class="uk-accordion-title" href="#">{{ $region->name }}</a>--}}
+                            {{--<div class="uk-accordion-content">--}}
+                                {{--<ul class="uk-list uk-list-striped area-list">--}}
+                                    {{--@foreach($region->areas as $area)--}}
+                                        {{--<area-item :data="{{ $area->toJson() }}">--}}
+                                        {{--</area-item>--}}
+                                    {{--@endforeach--}}
+                                    {{--<li><a href=""><span uk-icon="icon: plus"></span></a></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
+                    {{--@endforeach--}}
+                {{--</ul>--}}
+            {{--</div>--}}
 
-    <div uk-grid>
+            {{--<div class="uk-flex uk-flex-right">--}}
+                {{--<a href="#create-region" class="uk-icon-button" uk-icon="plus" uk-toggle></a>--}}
+                {{--<a href="#delete-region" class="uk-icon-button" uk-icon="trash" uk-toggle></a>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
-        <div class="uk-width-2-3">
-            <div class="uk-card uk-card-default uk-card-body">
-                    ここに地図
-            </div>
-        </div>
-
-
-        <div class="uk-width-1-3">
-            <div class="uk-card uk-card-default">
-                <ul uk-accordion="multiple: true">
-                    @foreach($regions as $region)
-                        <li>
-                            <a class="uk-accordion-title" href="#">{{ $region->name }}</a>
-                            <div class="uk-accordion-content">
-                                <ul class="uk-list uk-list-striped">
-                                    @foreach($region->areas as $area)
-                                    <li>
-                                        {{ $area->name }}
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
-
-
-                <div class="card-body">
-                    <form method="POST" action="/region">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <input type="text" id="region-name" placeholder="リージョン名" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}">
-                            @if ($errors->has('name'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('name') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                        <button type="submit" class="btn btn-primary">登録</button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
+    {{--<delete-region></delete-region>--}}
+    {{--<create-region></create-region>--}}
 @endsection

@@ -18,6 +18,7 @@ class CreateGatherTime extends Migration
             $table->integer('gather_place_id')->unsigned();
             $table->time('start_time')->nullable();
             $table->timestamps();
+            $table->softDeletes();
             $table->foreign('gather_place_id')->references('id')->on('gather_place');
         });
     }

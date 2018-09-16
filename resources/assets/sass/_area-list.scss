@@ -1,0 +1,8 @@
+.area-list {
+  li {
+    &:hover {
+      background-color: $hover-color;
+      cursor: pointer;
+    }
+  }
+}

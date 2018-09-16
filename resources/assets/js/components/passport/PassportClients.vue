@@ -6,8 +6,8 @@
 
 <template>
     <div>
-        <div class="card card-default">
-            <div class="card-header">
+        <div class="uk-card uk-card-default">
+            <div class="uk-card-header">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <span>
                         OAuth Clients
@@ -19,13 +19,13 @@
                 </div>
             </div>
 
-            <div class="card-body">
+            <div class="uk-card-body">
                 <!-- Current Clients -->
                 <p class="mb-0" v-if="clients.length === 0">
                     You have not created any OAuth clients.
                 </p>
 
-                <table class="table table-borderless mb-0" v-if="clients.length > 0">
+                <table class="uk-table table-borderless mb-0" v-if="clients.length > 0">
                     <thead>
                         <tr>
                             <th>Client ID</th>
@@ -73,18 +73,18 @@
         </div>
 
         <!-- Create Client Modal -->
-        <div class="modal fade" id="modal-create-client" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">
+        <div class="uk-modal fade" id="modal-create-client" tabindex="-1" role="dialog">
+            <div class="uk-modal-dialog">
+                <div class="uk-modal-content">
+                    <div class="uk-modal-header">
+                        <h4 class="uk-modal-title">
                             Create Client
                         </h4>
 
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
 
-                    <div class="modal-body">
+                    <div class="uk-modal-body">
                         <!-- Form Errors -->
                         <div class="alert alert-danger" v-if="createForm.errors.length > 0">
                             <p class="mb-0"><strong>Whoops!</strong> Something went wrong!</p>
@@ -129,7 +129,7 @@
                     </div>
 
                     <!-- Modal Actions -->
-                    <div class="modal-footer">
+                    <div class="uk-modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
                         <button type="button" class="btn btn-primary" @click="store">
@@ -141,18 +141,18 @@
         </div>
 
         <!-- Edit Client Modal -->
-        <div class="modal fade" id="modal-edit-client" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">
+        <div class="uk-modal fade" id="modal-edit-client" tabindex="-1" role="dialog">
+            <div class="uk-modal-dialog">
+                <div class="uk-modal-content">
+                    <div class="uk-modal-header">
+                        <h4 class="uk-modal-title">
                             Edit Client
                         </h4>
 
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
 
-                    <div class="modal-body">
+                    <div class="uk-modal-body">
                         <!-- Form Errors -->
                         <div class="alert alert-danger" v-if="editForm.errors.length > 0">
                             <p class="mb-0"><strong>Whoops!</strong> Something went wrong!</p>
@@ -197,7 +197,7 @@
                     </div>
 
                     <!-- Modal Actions -->
-                    <div class="modal-footer">
+                    <div class="uk-modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
                         <button type="button" class="btn btn-primary" @click="update">
@@ -211,6 +211,7 @@
 </template>
 
 <script>
+    import UIkit from "uikit";
     export default {
         /*
          * The component's data.
@@ -253,14 +254,14 @@
              */
             prepareComponent() {
                 this.getClients();
-
-                $('#modal-create-client').on('shown.bs.modal', () => {
-                    $('#create-client-name').focus();
-                });
-
-                $('#modal-edit-client').on('shown.bs.modal', () => {
-                    $('#edit-client-name').focus();
-                });
+                //
+                // $('#modal-create-client').on('shown.bs.modal', () => {
+                //     $('#create-client-name').focus();
+                // });
+                //
+                // $('#modal-edit-client').on('shown.bs.modal', () => {
+                //     $('#edit-client-name').focus();
+                // });
             },
 
             /**
@@ -277,7 +278,7 @@
              * Show the form for creating new clients.
              */
             showCreateClientForm() {
-                $('#modal-create-client').modal('show');
+                UIkit.modal('#modal-create-client').show();
             },
 
             /**
@@ -298,7 +299,7 @@
                 this.editForm.name = client.name;
                 this.editForm.redirect = client.redirect;
 
-                $('#modal-edit-client').modal('show');
+                UIkit.modal('#modal-edit-client').show();
             },
 
             /**
@@ -325,7 +326,7 @@
                         form.redirect = '';
                         form.errors = [];
 
-                        $(modal).modal('hide');
+                        UIkit.modal(modal).show();
                     })
                     .catch(error => {
                         if (typeof error.response.data === 'object') {

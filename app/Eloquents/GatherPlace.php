@@ -4,6 +4,7 @@ namespace App\Eloquents;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * 採取場所
@@ -12,6 +13,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class GatherPlace extends Model
 {
+    use SoftDeletes;
+
+    /**
+     * @var array 日付へキャストする属性
+     */
+    protected $dates = ['deleted_at'];
+
     /**
      * @var string テーブル名
      */
@@ -66,7 +74,19 @@ class GatherPlace extends Model
      */
     public function gatherItems()
     {
-        return $this->belongsToMany(GatherItem::class, 'gather_place_gather_item')->withPivot('shelf_id');
+        return $this->belongsToMany(GatherItem::class, 'gather_place_gather_item')
+            ->withPivot('shelf_id');
+    }
+
+    /**
+     * 採取アイテムを論理削除含め取得
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function gatherItemsWithTrashed()
+    {
+        return $this->belongsToMany(GatherItem::class, 'gather_place_gather_item')
+            ->withPivot('shelf_id')
+            ->withTrashed();
     }
 
     /**

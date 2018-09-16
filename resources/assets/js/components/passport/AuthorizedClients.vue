@@ -7,10 +7,10 @@
 <template>
     <div>
         <div v-if="tokens.length > 0">
-            <div class="card card-default">
-                <div class="card-header">Authorized Applications</div>
+            <div class="uk-card uk-card-default">
+                <div class="uk-card-header">Authorized Applications</div>
 
-                <div class="card-body">
+                <div class="uk-card-body">
                     <!-- Authorized Tokens -->
                     <table class="table table-borderless mb-0">
                         <thead>

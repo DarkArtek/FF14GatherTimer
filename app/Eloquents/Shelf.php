@@ -3,6 +3,7 @@
 namespace App\Eloquents;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * 採取時間
@@ -11,6 +12,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Shelf extends Model
 {
+    use SoftDeletes;
+
+    /**
+     * @var array 日付へキャストする属性
+     */
+    protected $dates = ['deleted_at'];
+
     /**
      * @var string テーブル名
      */

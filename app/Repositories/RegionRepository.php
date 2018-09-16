@@ -35,6 +35,34 @@ class RegionRepository implements RegionRepositoryInterface
     }
 
     /**
+     * 全ての情報を取得
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function findAllInfo()
+    {
+        return $this->region->withTrashed()
+            ->with([
+            'areasWithTrashed',
+            'areasWithTrashed.gatherPlacesWithTrashed',
+            'areasWithTrashed.gatherPlacesWithTrashed.gatherItemsWithTrashed',
+            'areasWithTrashed.gatherPlacesWithTrashed.gatherItemsWithTrashed.purifiedItemsWithTrashed'
+            ])->get();
+    }
+
+    /**
+     * 表示対象のリージョンおよびエリアを取得
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function findIsShow()
+    {
+        return $this->region::with(['areas' => function ($query) {
+            $query->where('is_show', true);
+        },'areas.gatherPlaces','areas.gatherPlaces.gatherItems'])->where('is_show', true)->get();
+    }
+
+    /**
      * 採取場所が登録されているリージョンを取得
      *
      * @return \Illuminate\Database\Eloquent\Collection
@@ -80,11 +108,12 @@ class RegionRepository implements RegionRepositoryInterface
     /**
      * レコードの作成もしくは更新
      *
-     * @param int $regionId
-     * @return bool
+     * @param Region $region
+     * @return bool|null
+     * @throws \Exception
      */
-    public function destroy(int $regionId)
+    public function delete(Region $region)
     {
-        return Region::destroy($regionId);
+        return $region->delete();
     }
 }

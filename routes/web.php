@@ -10,22 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/edit', 'View\EditController@index')->name('edit');
 
-Route::resource(
-    'region',
-    'View\RegionController',
-    [
-        'only' => [
-            'store', 'update', 'destroy'
-        ]
-    ]
-);
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/', 'View\EditController@index')->name('edit');
+    Route::get('/auth', function () {
+        return view('welcome');
+    });
+});

@@ -25,8 +25,7 @@ class GatherTimeController extends Controller
      */
     public function __construct(
         gatherTimeService $gatherTimeService
-    )
-    {
+    ) {
         $this->gatherTimeService = $gatherTimeService;
     }
 
@@ -49,11 +48,10 @@ class GatherTimeController extends Controller
     public function show($gatherTimeId)
     {
         $data = $this->gatherTimeService->findPlaceTimeByPlaceId($gatherTimeId);
-        if(null === $data){
+        if (null === $data) {
             throw new NotFoundHttpException();
         }
 
         return GatherTimeResource::collection($data);
     }
-
 }

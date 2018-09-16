@@ -15,7 +15,7 @@ trait CreatesApplication
     public function createApplication()
     {
         // envのキャッシュを読み込まない
-        if (file_exists(__DIR__.'/../bootstrap/cache/config.php')){
+        if (file_exists(__DIR__.'/../bootstrap/cache/config.php')) {
             unlink(__DIR__.'/../bootstrap/cache/config.php');
         }
 

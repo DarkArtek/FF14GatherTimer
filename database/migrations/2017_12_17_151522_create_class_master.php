@@ -18,6 +18,7 @@ class CreateClassMaster extends Migration
             $table->string('name');
             $table->string('icon')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -55,4 +55,27 @@ class GatherItemRepository implements GatherItemRepositoryInterface
     {
         return $gatherItem->save();
     }
+
+    /**
+     * レコードの削除
+     *
+     * @param GatherItem $gatherItem
+     * @return bool
+     * @throws \Exception
+     */
+    public function delete(GatherItem $gatherItem)
+    {
+        return $gatherItem->delete();
+    }
+
+    /**
+     * primaryIdからレコードの削除
+     *
+     * @param array $gatherItemIds
+     * @return bool
+     */
+    public function deleteByIds(array $gatherItemIds)
+    {
+        return GatherItem::destroy($gatherItemIds);
+    }
 }

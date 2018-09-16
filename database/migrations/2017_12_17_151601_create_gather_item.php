@@ -23,6 +23,7 @@ class CreateGatherItem extends Migration
             $table->string('memo')->nullable();
             $table->string('icon')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

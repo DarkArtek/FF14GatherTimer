@@ -8,61 +8,24 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
 <div id="app">
-    <nav class="uk-navbar-container" uk-navbar>
-        <div class="uk-navbar-left">
-            <a class="uk-navbar-item uk-logo" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-        </div>
-
-        <div class="uk-navbar-right">
-            <a class="uk-navbar-toggle" uk-navbar-toggle-icon href=""></a>
-            <ul class="uk-navbar-nav">
-                <!-- Authentication Links -->
-                @guest
-                    <li><a class="nav-link" href="{{ route('login') }}">ログイン</a></li>
-                    <li><a class="nav-link" href="{{ route('register') }}">ユーザー登録</a></li>
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                ログアウト
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                  style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                @endguest
-            </ul>
-        </div>
-    </nav>
+    @include('layouts.navbar')
 
     <main>
         <div class="uk-container uk-margin-top">
             {{-- エラーの表示 --}}
             @if (session('status'))
-                <div class="alert status-{{session('status')}}">
-                    {{ session('message') }}
+                <div class="uk-alert-{{session('status')}}" uk-alert>
+                    <a class="uk-alert-close" uk-close></a>
+                    <p>{{ session('message') }}</p>
                 </div>
             @endif
-
             @yield('content')
         </div>
     </main>

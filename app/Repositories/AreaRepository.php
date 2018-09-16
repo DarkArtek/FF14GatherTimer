@@ -55,6 +55,16 @@ class AreaRepository implements AreaRepositoryInterface
     }
 
     /**
+     * リージョンIdからエリアを取得
+     * @param int $regionId
+     * @return $this|\Illuminate\Database\Eloquent\Model|null
+     */
+    public function findByRegionId($regionId)
+    {
+        return $this->area->where('region_id', $regionId);
+    }
+
+    /**
      * レコードの作成もしくは更新
      *
      * @param Area $area
@@ -63,5 +73,28 @@ class AreaRepository implements AreaRepositoryInterface
     public function save(Area $area)
     {
         return $area->save();
+    }
+
+    /**
+     * レコードの削除
+     *
+     * @param Area $area
+     * @return bool
+     * @throws \Exception
+     */
+    public function delete(Area $area)
+    {
+        return $area->delete();
+    }
+
+    /**
+     * プライマリIDからレコードの削除
+     *
+     * @param array $areaIds
+     * @return bool
+     */
+    public function deleteByIds(array $areaIds)
+    {
+        return Area::destroy($areaIds);
     }
 }
