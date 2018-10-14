@@ -17,9 +17,9 @@ interface GatherItemRepositoryInterface
      * Idから採取アイテムを取得
      *
      * @param $gatherItemId int
-     * @return null|\Illuminate\Database\Eloquent\Model
+     * @return null|GatherItem
      */
-    public function findorNullById($gatherItemId);
+    public function findOrNullById($gatherItemId);
 
     /**
      * レコードの作成もしくは更新

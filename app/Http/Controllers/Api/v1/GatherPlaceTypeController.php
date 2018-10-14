@@ -35,7 +35,9 @@ class GatherPlaceTypeController extends Controller
      */
     public function index()
     {
-        return GatherPlaceTypeResource::collection($this->gatherPlaceTypeService->findExistsGatherPlace());
+        return GatherPlaceTypeResource::collection(
+            $this->gatherPlaceTypeService->findExistsGatherPlace()
+        );
     }
 
     /**

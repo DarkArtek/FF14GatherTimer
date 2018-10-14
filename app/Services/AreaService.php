@@ -36,6 +36,13 @@ class AreaService
      */
     private $gatherItemRepository;
 
+    /**
+     * AreaService constructor.
+     * @param AreaRepositoryInterface $areaRepository
+     * @param GatherPlaceGatherItemRepositoryInterface $gatherPlaceGatherItemRepository
+     * @param GatherPlaceRepositoryInterface $gatherPlaceRepository
+     * @param GatherItemRepository $gatherItemRepository
+     */
     public function __construct(
         AreaRepositoryInterface $areaRepository,
         GatherPlaceGatherItemRepositoryInterface $gatherPlaceGatherItemRepository,

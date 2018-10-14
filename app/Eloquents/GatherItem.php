@@ -35,6 +35,7 @@ class GatherItem extends Model
         'patch',
         'memo',
         'icon',
+        'discernment',
     ];
 
     /**

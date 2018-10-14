@@ -128,8 +128,9 @@ class RegionService
     {
         return DB::transaction(function () use ($request) {
             $region = new Region();
+            $region->fill($request->all());
             $this->regionRepository->save(
-                $region->fill($request->all())
+                $region
             );
             return $region;
         });

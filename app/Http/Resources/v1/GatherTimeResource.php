@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\v1;
 
+use App\Http\Resources\v1\GatherTime\GatherItemResource;
 use Illuminate\Http\Resources\Json\Resource;
 
 /**
@@ -39,6 +40,7 @@ class GatherTimeResource extends Resource
                 'id' => $this->gatherPlace->gatherPlaceType->id,
                 'name' => $this->gatherPlace->gatherPlaceType->name,
             ],
+
             'area' => [
                 'id' => $this->gatherPlace->area->id,
                 'name' => $this->gatherPlace->area->name,

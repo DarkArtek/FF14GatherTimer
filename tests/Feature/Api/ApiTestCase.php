@@ -119,7 +119,7 @@ abstract class ApiTestCase extends BaseTestCase
             ['create-servers']
         );
 
-        $this->json('GET', $this->uri . '/1')
+        $this->json('GET', $this->uri . '/99999')
             ->assertStatus(404)
             ->assertExactJson([
                 'message' => '',

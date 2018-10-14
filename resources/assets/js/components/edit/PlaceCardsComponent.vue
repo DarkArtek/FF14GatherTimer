@@ -1,7 +1,7 @@
 <template>
     <div class="uk-grid-match uk-child-width-1-3@l uk-child-width-1-2@m" uk-grid>
         <div v-for="gatherPlace in this.$store.state.viewArea.gather_places">
-            <div class="uk-card uk-card-default uk-card-hover place-card">
+            <div class="uk-card uk-card-default uk-card-hover place-card" uk-toggle="target: #place-detail">
                 <div class="uk-card-header">
                     <h3 class="uk-card-title">
                         <div class="uk-clearfix">
@@ -22,14 +22,22 @@
                 </ul>
             </div>
         </div>
+        <div>
+            <a href="" class="uk-icon-button uk-flex-center" uk-icon="plus"></a>
+        </div>
+        <placeDetails/>
     </div>
 </template>
 
 <script lang="ts">
+    import placeDetails from "./PlaceDetailsComponent.vue";
+
     export default {
+        components: {
+            placeDetails,
+        },
         data() {
-            return {
-            }
+            return {};
         },
     };
 </script>
