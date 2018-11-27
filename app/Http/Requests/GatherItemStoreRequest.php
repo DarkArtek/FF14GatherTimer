@@ -27,6 +27,10 @@ class GatherItemStoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        return GatherItemValidateRule::getRules(['name', 'level', 'patch']);
+        return GatherItemValidateRule::getRules([
+            'name',
+            'level',
+            'patch',
+        ]);
     }
 }

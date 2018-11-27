@@ -85,11 +85,29 @@ class GatherItemService
      */
     public function update(GatherItem $gatherItem, GatherItemUpdateRequest $request)
     {
+        $gatherItem->fill($request->only([
+            'name',
+            'star',
+            'level',
+            'patch',
+            'discernment',
+            'purified_items',
+        ]));
+
+        // アイコンの保存
+        if ($request->has('icon')) {
+            $iconName = basename($request->icon->store('public/images/item'));
+            $gatherItem->fill(['icon' => $iconName]);
+        }
+
         return DB::transaction(function () use ($gatherItem, $request) {
-            $gatherItem->fill($request->all());
             $this->gatherItemRepository->save(
                 $gatherItem
             );
+
+            $gatherItem
+                ->purifiedItems()
+                ->sync($request->get('purified_items', []));
             return $gatherItem;
         });
     }
