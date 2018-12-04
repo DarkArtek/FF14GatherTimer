@@ -56,10 +56,10 @@
                 this.errorAnimation = false;
                 axios.delete('/api/v1/gatherItem/' + gatherItemId)
                     .then(response => {
-                        // マスタ情報再取得
-                        axios.get('/api/v1/master')
+                        // 情報再取得
+                        axios.get('/api/v1/gatherItem')
                             .then(response => {
-                                this.$store.commit('setData', response.data.data);
+                                this.$store.commit('setGatherItem', response.data.data);
                             });
                         UIkit.notification('<span uk-icon=\'icon: check\'></span> 採取アイテムを削除しました', 'success');
                     })

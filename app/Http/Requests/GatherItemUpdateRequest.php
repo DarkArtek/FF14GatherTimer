@@ -33,7 +33,8 @@ class GatherItemUpdateRequest extends FormRequest
             'level',
             'patch',
             'discernment',
-            'purified',
+            'purified_items',
+            'icon',
         ]);
     }
 }

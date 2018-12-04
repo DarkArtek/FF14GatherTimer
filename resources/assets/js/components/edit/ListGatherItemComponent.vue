@@ -21,36 +21,34 @@
                 </tr>
                 </thead>
                 <tbody>
-                <template v-for="gatherItem in this.$store.state.gatherItem">
-                    <tr>
-                        <td class="uk-text-middle">
-                            <img :src="gatherItem.icon">
-                        </td>
-                        <td class="uk-text-middle">
-                            {{ gatherItem.level }}
-                        </td>
-                        <td class="uk-text-middle">
-                            {{ gatherItem.star }}
-                        </td>
-                        <td class="uk-text-middle">
-                            {{ gatherItem.name }}
-                        </td>
-                        <td class="uk-text-middle">
-                            {{ gatherItem.discernment }}
-                        </td>
-                        <td class="uk-text-middle">
-                            <span class="uk-label" v-for="purified_item in gatherItem.purified_items">
-                                {{ purified_item.name }}
-                            </span>
-                        </td>
-                        <td class="uk-text-middle">
-                            <edit-gather-item :target="gatherItem"/>
-                        </td>
-                        <td class="uk-text-middle">
-                            <delete-gather-item :target="gatherItem"/>
-                        </td>
-                    </tr>
-                </template>
+                <tr v-for="gatherItem in this.$store.state.gatherItem">
+                    <td class="uk-text-middle">
+                        <img :src="gatherItem.icon">
+                    </td>
+                    <td class="uk-text-middle">
+                        {{ gatherItem.level }}
+                    </td>
+                    <td class="uk-text-middle">
+                        {{ gatherItem.star }}
+                    </td>
+                    <td class="uk-text-middle">
+                        {{ gatherItem.name }}
+                    </td>
+                    <td class="uk-text-middle">
+                        {{ gatherItem.discernment }}
+                    </td>
+                    <td class="uk-text-middle">
+                        <span class="uk-label" v-for="purified_item in gatherItem.purified_items">
+                            {{ purified_item.name }}
+                        </span>
+                    </td>
+                    <td class="uk-text-middle">
+                        <edit-gather-item :target="gatherItem"/>
+                    </td>
+                    <td class="uk-text-middle">
+                        <delete-gather-item :target="gatherItem"/>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
