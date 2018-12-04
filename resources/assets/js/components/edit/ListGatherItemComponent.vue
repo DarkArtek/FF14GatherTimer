@@ -46,12 +46,20 @@
                         <edit-gather-item :target="gatherItem"/>
                     </td>
                     <td class="uk-text-middle">
-                        <delete-gather-item :target="gatherItem"/>
+                        <div v-if="null === gatherItem.deleted_at"
+                             v-bind:class="{ 'uk-animation-shake': errorAnimation }">
+                            <a uk-icon="icon: trash" class="uk-text-danger uk-animation-fade"
+                               @click="onClickDelete(gatherItem)"></a>
+                        </div>
+                        <div v-else v-bind:class="{ 'uk-animation-shake': errorAnimation }">
+                            <a uk-icon="icon: reply" class="uk-text-primary uk-animation-fade" @click=""></a>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
+        <delete-gather-item :target="deleteTarget"/>
     </div>
 </template>
 
@@ -60,6 +68,7 @@
     import editGatherItem from './EditGatherItemComponent.vue';
     import deleteGatherItem from './DeleteGatherItemComponent.vue';
     import Vue, {ComponentOptions} from 'vue';
+    import UIkit from 'uikit';
 
 
     interface InterfaceData extends Vue {
@@ -67,6 +76,10 @@
         form: {
             name: string;
             errors: { [key: string]: string; };
+        };
+        deleteTarget: {
+            id: number;
+            name: string;
         };
     }
 
@@ -78,6 +91,10 @@
                     name: '',
                     errors: []
                 },
+                deleteTarget: {
+                    id: -1,
+                    name: ''
+                }
             };
         },
         components: {
@@ -85,6 +102,12 @@
             editGatherItem,
             deleteGatherItem,
         },
+        methods: {
+            onClickDelete(target) {
+                this.deleteTarget = target;
+                UIkit.modal(document.getElementById('modal-delete-gather-item')).show();
+            }
+        }
     } as ComponentOptions<InterfaceData>;
 </script>
 
