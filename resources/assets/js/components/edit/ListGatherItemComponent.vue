@@ -43,7 +43,7 @@
                         </span>
                     </td>
                     <td class="uk-text-middle">
-                        <edit-gather-item :target="gatherItem"/>
+                        <a uk-icon="icon: pencil" class="uk-text-danger uk-animation-fade" @click="onClickEdit(gatherItem)"></a>
                     </td>
                     <td class="uk-text-middle">
                         <div v-if="null === gatherItem.deleted_at"
@@ -59,6 +59,7 @@
                 </tbody>
             </table>
         </div>
+        <edit-gather-item ref="editGatherItemModal"/>
         <delete-gather-item :target="deleteTarget"/>
     </div>
 </template>
@@ -69,7 +70,7 @@
     import deleteGatherItem from './DeleteGatherItemComponent.vue';
     import Vue, {ComponentOptions} from 'vue';
     import UIkit from 'uikit';
-
+    import Purified from "../../models/Purified";
 
     interface InterfaceData extends Vue {
         errorAnimation: number;
@@ -103,6 +104,11 @@
             deleteGatherItem,
         },
         methods: {
+            onClickEdit(target) {
+                let modal = (this.$refs.editGatherItemModal as any);
+                modal.resetData(target);
+                UIkit.modal(document.getElementById('modal-edit-gather-item')).show();
+            },
             onClickDelete(target) {
                 this.deleteTarget = target;
                 UIkit.modal(document.getElementById('modal-delete-gather-item')).show();
