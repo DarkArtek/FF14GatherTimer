@@ -10,6 +10,8 @@ namespace Tests\Feature\Api\v1;
 use App\Eloquents\GatherItem;
 use App\Eloquents\GatherItemPurified;
 use App\User;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Passport\Passport;
 use Tests\Feature\Api\ApiTestCase;
 
@@ -61,14 +63,23 @@ class GatherItemTest extends ApiTestCase
         );
 
         parent::createTestData();
+        Storage::fake('icon');
+        $file = UploadedFile::fake()
+            ->image('icon.jpg', 50, 50);
 
         $storeData = [
             'name' => '採取アイテムA',
+            'star' => '1',
             'level' => 60,
+            'discernment' => '120',
             'patch' => '4.0',
+            'icon' => $file,
         ];
+
         $response = $this->json('POST', $this->uri, $storeData);
-        $response->assertStatus(201)
+
+        $response
+            ->assertStatus(201)
             ->assertJsonStructure(['data' => $this->dataStructure]);
     }
 

@@ -7,6 +7,8 @@
 
         <!--Body-->
         <div class="uk-card-body">
+            <a class="uk-button uk-button-default" @click="onClickCreate()">新規作成</a>
+
             <table class="uk-table uk-table-divider table-small">
                 <thead>
                 <tr>
@@ -43,15 +45,25 @@
                         </span>
                     </td>
                     <td class="uk-text-middle">
-                        <edit-gather-item :target="gatherItem"/>
+                        <a uk-icon="icon: pencil" class="uk-text-danger uk-animation-fade" @click="onClickEdit(gatherItem)"></a>
                     </td>
                     <td class="uk-text-middle">
-                        <delete-gather-item :target="gatherItem"/>
+                        <div v-if="null === gatherItem.deleted_at"
+                             v-bind:class="{ 'uk-animation-shake': errorAnimation }">
+                            <a uk-icon="icon: trash" class="uk-text-danger uk-animation-fade"
+                               @click="onClickDelete(gatherItem)"></a>
+                        </div>
+                        <div v-else v-bind:class="{ 'uk-animation-shake': errorAnimation }">
+                            <a uk-icon="icon: reply" class="uk-text-primary uk-animation-fade" @click=""></a>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
+        <edit-gather-item ref="editGatherItemModal" :isCreate=false modalId='modal-edit-gather-item'/>
+        <edit-gather-item :isCreate=true modalId='modal-create-gather-item'/>
+        <delete-gather-item :target="deleteTarget"/>
     </div>
 </template>
 
@@ -60,13 +72,17 @@
     import editGatherItem from './EditGatherItemComponent.vue';
     import deleteGatherItem from './DeleteGatherItemComponent.vue';
     import Vue, {ComponentOptions} from 'vue';
-
+    import UIkit from 'uikit';
 
     interface InterfaceData extends Vue {
         errorAnimation: number;
         form: {
             name: string;
             errors: { [key: string]: string; };
+        };
+        deleteTarget: {
+            id: number;
+            name: string;
         };
     }
 
@@ -78,6 +94,10 @@
                     name: '',
                     errors: []
                 },
+                deleteTarget: {
+                    id: -1,
+                    name: ''
+                }
             };
         },
         components: {
@@ -85,6 +105,20 @@
             editGatherItem,
             deleteGatherItem,
         },
+        methods: {
+            onClickCreate() {
+                UIkit.modal(document.getElementById('modal-create-gather-item')).show();
+            },
+            onClickEdit(target) {
+                let modal = (this.$refs.editGatherItemModal as any);
+                modal.resetData(target);
+                UIkit.modal(document.getElementById('modal-edit-gather-item')).show();
+            },
+            onClickDelete(target) {
+                this.deleteTarget = target;
+                UIkit.modal(document.getElementById('modal-delete-gather-item')).show();
+            }
+        }
     } as ComponentOptions<InterfaceData>;
 </script>
 

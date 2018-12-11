@@ -74,7 +74,7 @@ class GatherItemController extends Controller
     }
 
     /**
-     * /gatherItemのPOSTアクセス
+     * /gatherItem/{GatherItem}のPOSTアクセス
      * @param GatherItem $gatherItem
      * @param GatherItemUpdateRequest $request
      * @return GatherItemResource

@@ -64,12 +64,29 @@ class GatherItemService
      */
     public function store(GatherItemStoreRequest $request)
     {
-        return DB::transaction(function () use ($request) {
-            $gatherItem = new GatherItem();
-            $gatherItem->fill($request->all());
+        $gatherItem = new GatherItem($request->only([
+            'name',
+            'star',
+            'level',
+            'patch',
+            'discernment',
+            'purified_items',
+        ]));
+
+        // アイコンの保存
+        if ($request->has('icon')) {
+                $iconName = basename($request->icon->store(config('gatherTimer.storage_path.item')));
+                $gatherItem->fill(['icon' => $iconName]);
+        }
+
+        return DB::transaction(function () use ($gatherItem, $request) {
             $this->gatherItemRepository->save(
                 $gatherItem
             );
+
+            $gatherItem
+                ->purifiedItems()
+                ->sync($request->get('purified_items', []));
             return $gatherItem;
         });
     }
@@ -96,7 +113,7 @@ class GatherItemService
 
         // アイコンの保存
         if ($request->has('icon')) {
-            $iconName = basename($request->icon->store('public/images/item'));
+            $iconName = basename($request->icon->store(config('gatherTimer.storage_path.item')));
             $gatherItem->fill(['icon' => $iconName]);
         }
 

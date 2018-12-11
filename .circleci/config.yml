@@ -17,8 +17,15 @@ jobs:
       - checkout
 
       - run:
+          name: Install Library
+          command: sudo apt-get install -y libpng-dev libjpeg-dev
+
+      - run:
           name: Install PHP extensions
-          command: sudo docker-php-ext-install pdo_mysql
+          command: |
+            sudo docker-php-ext-install pdo_mysql
+            sudo docker-php-ext-configure gd --with-png-dir=/usr/include --with-jpeg-dir=/usr/include
+            sudo docker-php-ext-install gd
 
       - run:
           name: composer self-update
