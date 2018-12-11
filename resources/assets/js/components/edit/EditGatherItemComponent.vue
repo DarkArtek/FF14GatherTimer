@@ -1,9 +1,10 @@
 <template>
-    <div id="modal-edit-gather-item" uk-modal>
+    <div :id="this.modalId" uk-modal>
         <div class="uk-modal-dialog">
             <button class="uk-modal-close-default" type="button" uk-close></button>
             <div class="uk-modal-header">
-                <h2 class="uk-modal-title">採取アイテムの編集</h2>
+                <h2 class="uk-modal-title" v-if="isCreate">採取アイテムの作成</h2>
+                <h2 class="uk-modal-title" v-else>採取アイテムの編集</h2>
             </div>
             <div class="uk-modal-body">
                 <form class="uk-form" role="form" @submit.prevent="update">
@@ -64,8 +65,8 @@
                 </form>
             </div>
             <div class="uk-modal-footer uk-text-right">
-                <button class="uk-button uk-button-primary" type="button" @click="update(target.id)"
-                        v-bind:class="{ 'uk-animation-shake': errorAnimation }">
+                <button class="uk-button uk-button-primary " type="button" @click="update()"
+                        :class="{ 'uk-animation-shake': errorAnimation }">
                     保存
                 </button>
                 <button class="uk-button uk-button-link uk-margin-left uk-modal-close" type="button">Cancel
@@ -99,10 +100,13 @@
         showIcon: string;
         newIcon: Blob;
         switchFile: boolean;
+        isCreate: number;
+        modalId: string;
     }
 
     export default {
         name: "edit-gather-item",
+        props: ['isCreate', 'modalId'],
         data() {
             return {
                 errorAnimation: false,
@@ -110,22 +114,22 @@
                 errorMessage: '',
                 checked_purified_ids: [],
                 showIcon: '',
-                newIcon: null,
+                newIcon: new Blob(),
                 switchFile: true,
                 target: {
-                    id: -1,
+                    id: null,
                     name: '',
                     star: 0,
-                    level: -1,
-                    patch: 0,
-                    discernment: 0,
+                    level: null,
+                    patch: null,
+                    discernment: null,
                     purified_items: [],
                     icon: null,
                 }
             };
         },
         methods: {
-            update(gatherItemId) {
+            update() {
                 this.errorAnimation = false;
                 let formData = new FormData();
                 formData.append('name', `${this.target.name}`);
@@ -142,17 +146,34 @@
                     formData.append('icon', this.newIcon);
                 }
 
+
+                let url = '/api/v1/gatherItem';
+                let $method;
+                if (this.isCreate) {
+                    $method = 'POST';
+                } else {
+                    url += '/' + this.target.id;
+                    $method = 'PUT';
+                }
+
                 let config = {
                     headers: {
                         'content-type': 'multipart/form-target',
-                        'X-HTTP-Method-Override': 'PUT',
+                        'X-HTTP-Method-Override': $method,
                     }
                 };
 
-                axios.post('/api/v1/gatherItem/' + gatherItemId, formData, config)
+                axios.post(url, formData, config)
                     .then(response => {
-                        UIkit.modal(document.getElementById('modal-edit-gather-item')).hide();
-                        UIkit.notification('<span uk-icon=\'icon: check\'></span> 採取アイテム「' + `${this.target.name}` + '」を編集しました', 'success');
+                        let message = '';
+                        UIkit.modal(document.getElementById(this.modalId)).hide();
+                        if (this.isCreate) {
+                            message = '採取アイテム「' + `${this.target.name}` + '」を作成しました';
+                        } else {
+                            message = '採取アイテム「' + `${this.target.name}` + '」を編集しました';
+                        }
+
+                        UIkit.notification('<span uk-icon=\'icon: check\'></span> ' + message, 'success');
                         // 情報再取得
                         axios.get('/api/v1/gatherItem')
                             .then(response => {
@@ -160,14 +181,14 @@
                             });
                     })
                     .catch(error => {
-                        if (typeof error.response.target === 'object') {
-                            this.errorMessage = error.response.target.message;
+                        this.errorAnimation = true;
+                        if (typeof error.response.data === 'object') {
+                            this.errorMessage = error.response.data.message;
                         }
                         else {
                             this.errorMessage = '処理に失敗しました。もう一度実行してください。';
                         }
-                        this.errors = error.response.target.errors;
-                        this.errorAnimation = true;
+                        this.errors = error.response.data.errors;
                     });
             },
             //ファイル選択で選んだファイルを取得する
@@ -189,6 +210,8 @@
                 reader.readAsDataURL(file);
             },
             resetData: function(newTarget) {
+                this.errors = [];
+                this.errorMessage = '';
                 this.target = newTarget;
                 this.showIcon = this.target.icon;
                 this.newIcon = new Blob();

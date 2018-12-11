@@ -7,6 +7,8 @@
 
         <!--Body-->
         <div class="uk-card-body">
+            <a class="uk-button uk-button-default" @click="onClickCreate()">新規作成</a>
+
             <table class="uk-table uk-table-divider table-small">
                 <thead>
                 <tr>
@@ -59,7 +61,8 @@
                 </tbody>
             </table>
         </div>
-        <edit-gather-item ref="editGatherItemModal"/>
+        <edit-gather-item ref="editGatherItemModal" :isCreate=false modalId='modal-edit-gather-item'/>
+        <edit-gather-item :isCreate=true modalId='modal-create-gather-item'/>
         <delete-gather-item :target="deleteTarget"/>
     </div>
 </template>
@@ -70,7 +73,6 @@
     import deleteGatherItem from './DeleteGatherItemComponent.vue';
     import Vue, {ComponentOptions} from 'vue';
     import UIkit from 'uikit';
-    import Purified from "../../models/Purified";
 
     interface InterfaceData extends Vue {
         errorAnimation: number;
@@ -104,6 +106,9 @@
             deleteGatherItem,
         },
         methods: {
+            onClickCreate() {
+                UIkit.modal(document.getElementById('modal-create-gather-item')).show();
+            },
             onClickEdit(target) {
                 let modal = (this.$refs.editGatherItemModal as any);
                 modal.resetData(target);

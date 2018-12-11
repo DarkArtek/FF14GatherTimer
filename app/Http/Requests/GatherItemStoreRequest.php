@@ -29,8 +29,12 @@ class GatherItemStoreRequest extends FormRequest
     {
         return GatherItemValidateRule::getRules([
             'name',
+            'star',
             'level',
             'patch',
+            'discernment',
+            'purified_items',
+            'icon',
         ]);
     }
 }
