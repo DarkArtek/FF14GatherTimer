@@ -75,7 +75,11 @@ class GatherItemService
 
         // アイコンの保存
         if ($request->has('icon')) {
-                $iconName = basename($request->icon->store(config('gatherTimer.storage_path.item')));
+                $iconName = basename(
+                    $request
+                        ->file('icon')
+                        ->store(config('gatherTimer.storage_path.item'))
+                );
                 $gatherItem->fill(['icon' => $iconName]);
         }
 
@@ -113,7 +117,11 @@ class GatherItemService
 
         // アイコンの保存
         if ($request->has('icon')) {
-            $iconName = basename($request->icon->store(config('gatherTimer.storage_path.item')));
+            $iconName = basename(
+                $request
+                    ->file('icon')
+                    ->store(config('gatherTimer.storage_path.item'))
+            );
             $gatherItem->fill(['icon' => $iconName]);
         }
 

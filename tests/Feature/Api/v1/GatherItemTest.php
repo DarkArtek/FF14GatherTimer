@@ -64,16 +64,13 @@ class GatherItemTest extends ApiTestCase
 
         parent::createTestData();
         Storage::fake('icon');
-        $file = UploadedFile::fake()
-            ->image('icon.jpg', 50, 50);
-
         $storeData = [
             'name' => '採取アイテムA',
             'star' => '1',
             'level' => 60,
             'discernment' => '120',
             'patch' => '4.0',
-            'icon' => $file,
+            'icon' => UploadedFile::fake()->image('icon.jpg', 50, 50),
         ];
 
         $response = $this->json('POST', $this->uri, $storeData);

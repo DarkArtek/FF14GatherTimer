@@ -4,6 +4,7 @@ namespace App\Eloquents;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * 採取アイテム
@@ -73,6 +74,6 @@ class GatherItem extends Model
      */
     public function getIconAttribute($value): string
     {
-        return asset('storage/images/item/' . $value);
+        return Storage::url(config('gatherTimer.storage_path.item') . $value);
     }
 }
